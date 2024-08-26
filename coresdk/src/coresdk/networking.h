@@ -17,9 +17,9 @@
 
 #include "types.h"
 
+using std::map;
 using std::string;
 using std::vector;
-using std::map;
 
 namespace splashkit_lib
 {
@@ -155,7 +155,7 @@ namespace splashkit_lib
      * @attribute getter has_new_connections
      */
     bool server_has_new_connection(server_socket server);
-    
+
     /**
      * Get the number of new connections made to the server.
      * The count will increase as the server accepts new connections.
@@ -169,7 +169,7 @@ namespace splashkit_lib
      * @attribute getter new_connection_count
      */
     int new_connection_count(server_socket server);
-    
+
     /**
      * Get the oldest new connections made to the server, and
      * reduces the new connection count by 1.
@@ -181,7 +181,7 @@ namespace splashkit_lib
      * @attribute method fetch_new_connection
      */
     connection fetch_new_connection(server_socket server);
-    
+
     /**
      * Allows you to reset the new connection count to 0.
      * (The connections are kept)
@@ -857,7 +857,7 @@ namespace splashkit_lib
      *
      * @return hexadecimal representation of ipc4 string
      */
-    string ipv4_to_hex(const string& a_ip);
+    string ipv4_to_hex(const string &a_ip);
 
     /**
      * @brief Encodes ipv4 string into single integer
@@ -884,6 +884,30 @@ namespace splashkit_lib
     string ipv4_to_str(unsigned int ip);
 
     /**
+     * @brief Converts an ipv4 address string to binary representation
+     *
+     * Converts an ipv4 address into its binary representation
+     * e.g. "11000000.10101000.00000000.00000001" from "192.168.0.1"
+     *
+     * @param a_ip IP address to convert
+     *
+     * @return Binary representation of the IPv4 string
+     */
+    string ipv4_to_bin(const string &a_ip);
+
+    /**
+     * @brief Converts a binary representation of an IPv4 address back to string
+     *
+     * Converts a binary representation of an IPv4 address back into its string form
+     * e.g. "192.168.0.1" from "11000000.10101000.00000000.00000001"
+     *
+     * @param bin_ip Binary representation of IP address to convert
+     *
+     * @return IPv4 address in string format
+     */
+    string bin_to_ipv4(const string &bin_ip);
+
+    /**
      * @brief Returns the ipv4 string for the current computer's ip
      *
      * Returns the ipv4 string of the localhost loopback for the current computer.
@@ -892,4 +916,4 @@ namespace splashkit_lib
      */
     string my_ip();
 }
-#endif //SPLASHKIT_NETWORKING_H
+#endif // SPLASHKIT_NETWORKING_H
