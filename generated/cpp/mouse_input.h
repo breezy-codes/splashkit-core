@@ -16,7 +16,7 @@ using std::vector;
 typedef enum {
     NO_BUTTON,
     LEFT_BUTTON,
-    MIDDLE_BUTTON,
+    MIDDLE_TTON,
     RIGHT_BUTTON,
     MOUSE_X1_BUTTON,
     MOUSE_X2_BUTTON

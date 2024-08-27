@@ -1,0 +1,9 @@
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/SplashKitBackend.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/sktest.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/skunit_tests.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/edit_cache.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/rebuild_cache.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/list_install_components.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/install.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/install/local.dir
+/home/breezy/Documents/Thoth-Tech/splashkit-core/projects/cmake/CMakeFiles/install/strip.dir

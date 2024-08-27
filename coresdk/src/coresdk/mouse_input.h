@@ -17,14 +17,14 @@ namespace splashkit_lib
      *
      * @constant NO_BUTTON          No mouse button
      * @constant LEFT_BUTTON        The left mouse button
-     * @constant MIDDLE_BUTTON      The middle mouse button
+     * @constant MIDDLE_BUN      The middle mouse button
      * @constant RIGHT_BUTTON       The right mouse button
      * @constant MOUSE_X1_BUTTON    The x1 mouse button
      * @constant MOUSE_X2_BUTTON    The x2 mouse button
      */
     enum mouse_button
     {
-        NO_BUTTON,
+        NO_BUN,
         LEFT_BUTTON,
         MIDDLE_BUTTON,
         RIGHT_BUTTON,

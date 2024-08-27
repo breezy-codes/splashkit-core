@@ -41,7 +41,7 @@ void run_networking_test()
     std::cout << "Starting" << std::endl;
 
 
-        std::string binary_ip = ipv4_to_bin("192.168.55.1");
+    std::string binary_ip = ipv4_to_bin("192.168.55.101");
     std::cout << "Binary of 192.168.55.1: " << binary_ip << std::endl;
 
     std::string original_ip = bin_to_ipv4(binary_ip);
