@@ -2746,6 +2746,8 @@ sklib.__sklib__create_server__string_ref__unsigned_short__connection_type.argtyp
 sklib.__sklib__create_server__string_ref__unsigned_short__connection_type.restype = c_void_p
 sklib.__sklib__dec_to_hex__unsigned_int.argtypes = [ c_uint ]
 sklib.__sklib__dec_to_hex__unsigned_int.restype = _sklib_string
+sklib.__sklib__dec_to_ipv4__unsigned_int.argtypes = [ c_uint ]
+sklib.__sklib__dec_to_ipv4__unsigned_int.restype = _sklib_string
 sklib.__sklib__fetch_new_connection__server_socket.argtypes = [ c_void_p ]
 sklib.__sklib__fetch_new_connection__server_socket.restype = c_void_p
 sklib.__sklib__has_connection__string_ref.argtypes = [ _sklib_string ]
@@ -2770,8 +2772,6 @@ sklib.__sklib__ipv4_to_dec__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__ipv4_to_dec__string_ref.restype = c_uint
 sklib.__sklib__ipv4_to_hex__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__ipv4_to_hex__string_ref.restype = _sklib_string
-sklib.__sklib__ipv4_to_str__unsigned_int.argtypes = [ c_uint ]
-sklib.__sklib__ipv4_to_str__unsigned_int.restype = _sklib_string
 sklib.__sklib__is_connection_open__connection.argtypes = [ c_void_p ]
 sklib.__sklib__is_connection_open__connection.restype = c_bool
 sklib.__sklib__is_connection_open__string_ref.argtypes = [ _sklib_string ]
@@ -6780,6 +6780,10 @@ def dec_to_hex ( a_dec ):
     __skparam__a_dec = __skadapter__to_sklib_unsigned_int(a_dec)
     __skreturn = sklib.__sklib__dec_to_hex__unsigned_int(__skparam__a_dec)
     return __skadapter__to_string(__skreturn)
+def dec_to_ipv4 ( ip ):
+    __skparam__ip = __skadapter__to_sklib_unsigned_int(ip)
+    __skreturn = sklib.__sklib__dec_to_ipv4__unsigned_int(__skparam__ip)
+    return __skadapter__to_string(__skreturn)
 def fetch_new_connection ( server ):
     __skparam__server = __skadapter__to_sklib_server_socket(server)
     __skreturn = sklib.__sklib__fetch_new_connection__server_socket(__skparam__server)
@@ -6825,10 +6829,6 @@ def ipv4_to_dec ( a_ip ):
 def ipv4_to_hex ( a_ip ):
     __skparam__a_ip = __skadapter__to_sklib_string(a_ip)
     __skreturn = sklib.__sklib__ipv4_to_hex__string_ref(__skparam__a_ip)
-    return __skadapter__to_string(__skreturn)
-def ipv4_to_str ( ip ):
-    __skparam__ip = __skadapter__to_sklib_unsigned_int(ip)
-    __skreturn = sklib.__sklib__ipv4_to_str__unsigned_int(__skparam__ip)
     return __skadapter__to_string(__skreturn)
 def is_connection_open ( con ):
     __skparam__con = __skadapter__to_sklib_connection(con)

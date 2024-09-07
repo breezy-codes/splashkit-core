@@ -1071,6 +1071,7 @@ function ConnectionPort(const name: String): Word;
 function CreateServer(const name: String; port: Word): ServerSocket;
 function CreateServer(const name: String; port: Word; protocol: ConnectionType): ServerSocket;
 function DecToHex(aDec: Cardinal): String;
+function DecToIpv4(ip: Cardinal): String;
 function FetchNewConnection(server: ServerSocket): Connection;
 function HasConnection(const name: String): Boolean;
 function HasMessages(): Boolean;
@@ -1083,7 +1084,6 @@ function HexStrToIpv4(const aHex: String): String;
 function HexToDecString(const aHex: String): String;
 function Ipv4ToDec(const aIP: String): Cardinal;
 function Ipv4ToHex(const aIP: String): String;
-function Ipv4ToStr(ip: Cardinal): String;
 function IsConnectionOpen(con: Connection): Boolean;
 function IsConnectionOpen(const name: String): Boolean;
 function LastConnection(const name: String): Connection;
@@ -3283,6 +3283,7 @@ function __sklib__connection_port__string_ref(const name: __sklib_string): Word;
 function __sklib__create_server__string_ref__unsigned_short(const name: __sklib_string; port: Word): __sklib_ptr; cdecl; external;
 function __sklib__create_server__string_ref__unsigned_short__connection_type(const name: __sklib_string; port: Word; protocol: LongInt): __sklib_ptr; cdecl; external;
 function __sklib__dec_to_hex__unsigned_int(aDec: Cardinal): __sklib_string; cdecl; external;
+function __sklib__dec_to_ipv4__unsigned_int(ip: Cardinal): __sklib_string; cdecl; external;
 function __sklib__fetch_new_connection__server_socket(server: __sklib_ptr): __sklib_ptr; cdecl; external;
 function __sklib__has_connection__string_ref(const name: __sklib_string): LongInt; cdecl; external;
 function __sklib__has_messages(): LongInt; cdecl; external;
@@ -3295,7 +3296,6 @@ function __sklib__hex_str_to_ipv4__string_ref(const aHex: __sklib_string): __skl
 function __sklib__hex_to_dec_string__string_ref(const aHex: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__ipv4_to_dec__string_ref(const aIP: __sklib_string): Cardinal; cdecl; external;
 function __sklib__ipv4_to_hex__string_ref(const aIP: __sklib_string): __sklib_string; cdecl; external;
-function __sklib__ipv4_to_str__unsigned_int(ip: Cardinal): __sklib_string; cdecl; external;
 function __sklib__is_connection_open__connection(con: __sklib_ptr): LongInt; cdecl; external;
 function __sklib__is_connection_open__string_ref(const name: __sklib_string): LongInt; cdecl; external;
 function __sklib__last_connection__string_ref(const name: __sklib_string): __sklib_ptr; cdecl; external;
@@ -10278,6 +10278,15 @@ begin
   __skreturn := __sklib__dec_to_hex__unsigned_int(__skparam__a_dec);
   result := __skadapter__to_string(__skreturn);
 end;
+function DecToIpv4(ip: Cardinal): String;
+var
+  __skparam__ip: Cardinal;
+  __skreturn: __sklib_string;
+begin
+  __skparam__ip := __skadapter__to_sklib_unsigned_int(ip);
+  __skreturn := __sklib__dec_to_ipv4__unsigned_int(__skparam__ip);
+  result := __skadapter__to_string(__skreturn);
+end;
 function FetchNewConnection(server: ServerSocket): Connection;
 var
   __skparam__server: __sklib_ptr;
@@ -10380,15 +10389,6 @@ var
 begin
   __skparam__a_ip := __skadapter__to_sklib_string(aIP);
   __skreturn := __sklib__ipv4_to_hex__string_ref(__skparam__a_ip);
-  result := __skadapter__to_string(__skreturn);
-end;
-function Ipv4ToStr(ip: Cardinal): String;
-var
-  __skparam__ip: Cardinal;
-  __skreturn: __sklib_string;
-begin
-  __skparam__ip := __skadapter__to_sklib_unsigned_int(ip);
-  __skreturn := __sklib__ipv4_to_str__unsigned_int(__skparam__ip);
   result := __skadapter__to_string(__skreturn);
 end;
 function IsConnectionOpen(con: Connection): Boolean;

@@ -3730,6 +3730,11 @@ string dec_to_hex(unsigned int a_dec) {
     __sklib_string __skreturn = __sklib__dec_to_hex__unsigned_int(__skparam__a_dec);
     return __skadapter__to_string(__skreturn);
 }
+string dec_to_ipv4(unsigned int ip) {
+    unsigned int __skparam__ip = __skadapter__to_unsigned_int(ip);
+    __sklib_string __skreturn = __sklib__dec_to_ipv4__unsigned_int(__skparam__ip);
+    return __skadapter__to_string(__skreturn);
+}
 connection fetch_new_connection(server_socket server) {
     __sklib_server_socket __skparam__server = __skadapter__to_sklib_server_socket(server);
     __sklib_connection __skreturn = __sklib__fetch_new_connection__server_socket(__skparam__server);
@@ -3793,11 +3798,6 @@ string ipv4_to_hex(const string &a_ip) {
     const __sklib_string __skparam__a_ip = __skadapter__to_sklib_string(a_ip);
     __sklib_string __skreturn = __sklib__ipv4_to_hex__string_ref(__skparam__a_ip);
     __skadapter__free__sklib_string(__skparam__a_ip);
-    return __skadapter__to_string(__skreturn);
-}
-string ipv4_to_str(unsigned int ip) {
-    unsigned int __skparam__ip = __skadapter__to_unsigned_int(ip);
-    __sklib_string __skreturn = __sklib__ipv4_to_str__unsigned_int(__skparam__ip);
     return __skadapter__to_string(__skreturn);
 }
 bool is_connection_open(connection con) {

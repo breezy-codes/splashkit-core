@@ -3,7 +3,7 @@
     "group": "animations",
     "brief": "Animations in SplashKit can be used to move between cells in\nbitmaps and sprites. Each animation generates a number sequence\nthat can then be used when drawing bitmaps.",
     "description": null,
-    "parsed_at": 1720129611,
+    "parsed_at": 1725691123,
     "path": "coresdk/src/coresdk/animations.h",
     "functions": [
       {
@@ -1951,7 +1951,7 @@
     "group": "audio",
     "brief": "SplashKit Audio allows you to load and play music and sound effects.",
     "description": "SplashKit's audio library allows you to easily load and play music and\nsound effects within your programs. To get started with audio the first\nthing you need to do is load a sound effect or music file. You can do this\nby calling the `load_sound_effect(string name)` function to the\n`load_music(string name)` function.",
-    "parsed_at": 1720129612,
+    "parsed_at": 1725691123,
     "path": "coresdk/src/coresdk/audio.h",
     "functions": [
       {
@@ -2045,7 +2045,7 @@
     "group": "utilities",
     "brief": "SplashKit provides some basic data manipulation functions to\nhelp make it easy to get some basic tasks performed.",
     "description": null,
-    "parsed_at": 1720129614,
+    "parsed_at": 1725691124,
     "path": "coresdk/src/coresdk/basics.h",
     "functions": [
       {
@@ -2612,7 +2612,7 @@
     "group": "resource_bundles",
     "brief": "SplashKit resource bundles allow you to quickly and easily load a\nnumber of resources in the `Resources` folder.",
     "description": "Supports the loading and freeing of game resource bundles. Resource types\ninclude images, sounds, music and animation files to name a few. Resource\nfiles must be saved in specific locations of a `Resources` folder for\nyour game.",
-    "parsed_at": 1720129615,
+    "parsed_at": 1725691124,
     "path": "coresdk/src/coresdk/bundles.h",
     "functions": [
       {
@@ -2757,7 +2757,7 @@
     "group": "camera",
     "brief": "SplashKit camera functionality allows you to move a virtual camera\naround in your world.",
     "description": "Splashkit camera functionality allows you to move a virtual camera around in\nyour world. This camera projects to the users window, allowing you to\ndraw things to the screen in your world coordinates.",
-    "parsed_at": 1720129618,
+    "parsed_at": 1725691125,
     "path": "coresdk/src/coresdk/camera.h",
     "functions": [
       {
@@ -3824,7 +3824,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129623,
+    "parsed_at": 1725691126,
     "path": "coresdk/src/coresdk/circle_drawing.h",
     "functions": [
       {
@@ -5195,7 +5195,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129626,
+    "parsed_at": 1725691127,
     "path": "coresdk/src/coresdk/circle_geometry.h",
     "functions": [
       {
@@ -6122,7 +6122,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129628,
+    "parsed_at": 1725691128,
     "path": "coresdk/src/coresdk/clipping.h",
     "functions": [
       {
@@ -6706,7 +6706,7 @@
     "group": "physics",
     "brief": "SplashKit Collisions library allow you to perform tests between\nbitmaps, sprites and shapes to determin if a collision has occured.",
     "description": null,
-    "parsed_at": 1720129634,
+    "parsed_at": 1725691129,
     "path": "coresdk/src/coresdk/collisions.h",
     "functions": [
       {
@@ -8957,7 +8957,7 @@
     "group": "color",
     "brief": "SplashKit simplifies color manipulation in graphical applications for developers, ensuring ease of use and efficiency.",
     "description": null,
-    "parsed_at": 1720129659,
+    "parsed_at": 1725691134,
     "path": "coresdk/src/coresdk/color.h",
     "functions": [
       {
@@ -14157,7 +14157,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129664,
+    "parsed_at": 1725691135,
     "path": "coresdk/src/coresdk/drawing_options.h",
     "functions": [
       {
@@ -15521,7 +15521,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129670,
+    "parsed_at": 1725691137,
     "path": "coresdk/src/coresdk/ellipse_drawing.h",
     "functions": [
       {
@@ -17616,7 +17616,7 @@
     "group": "geometry",
     "brief": "SplashKit's geometry functions assist with geometry-related computations.",
     "description": null,
-    "parsed_at": 1720129671,
+    "parsed_at": 1725691137,
     "path": "coresdk/src/coresdk/geometry.h",
     "functions": [
       {
@@ -17748,7 +17748,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129673,
+    "parsed_at": 1725691138,
     "path": "coresdk/src/coresdk/graphics.h",
     "functions": [
       {
@@ -18324,7 +18324,7 @@
     "group": "graphics",
     "brief": "SplashKit Images allow drawing of bitmaps and sprites to graphic windows.",
     "description": null,
-    "parsed_at": 1720129680,
+    "parsed_at": 1725691139,
     "path": "coresdk/src/coresdk/images.h",
     "functions": [
       {
@@ -20849,7 +20849,7 @@
     "group": "input",
     "brief": "Input handles user interaction and events such as keypresses.",
     "description": null,
-    "parsed_at": 1720129681,
+    "parsed_at": 1725691140,
     "path": "coresdk/src/coresdk/input.h",
     "functions": [
       {
@@ -20942,7 +20942,7 @@
     "group": "interface",
     "brief": "SplashKit Interface provides functions to create user interfaces, with elements such as draggable panels, buttons and text boxes.",
     "description": "SplashKit`s interface library provides various functions for creating\npanels, and drawing interface elements such as buttons, text boxes, and more",
-    "parsed_at": 1720130943,
+    "parsed_at": 1725691142,
     "path": "coresdk/src/coresdk/interface.h",
     "functions": [
       {
@@ -24384,7 +24384,7 @@
     "group": "json",
     "brief": "SplashKit Json allows you to create and read JSON objects.",
     "description": "Splashkit's JSON library allows you to easily create or read JSON objects and\nmanipulate them to/from a JSON string or from a file containing a JSON\nstring. Create a new JSON object with a call to `create_json()` and\nread or write data to it by calling methods like\n`json_add_string(json j, string key, string value)` and\n`json_read_string(json j, string key)`.",
-    "parsed_at": 1720129697,
+    "parsed_at": 1725691143,
     "path": "coresdk/src/coresdk/json.h",
     "functions": [
       {
@@ -26136,7 +26136,7 @@
     "group": "input",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129704,
+    "parsed_at": 1725691145,
     "path": "coresdk/src/coresdk/keyboard_input.h",
     "functions": [
       {
@@ -27134,7 +27134,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129709,
+    "parsed_at": 1725691147,
     "path": "coresdk/src/coresdk/line_drawing.h",
     "functions": [
       {
@@ -28673,7 +28673,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129712,
+    "parsed_at": 1725691147,
     "path": "coresdk/src/coresdk/line_geometry.h",
     "functions": [
       {
@@ -29547,7 +29547,7 @@
     "group": "logging",
     "brief": "SplashKit Logging facilitates streamlined logging with customizable severity levels and modes.",
     "description": "SplashKit Logging module,  allows users to initialize a custom logger with specified log levels and modes (console, file, or both). \nThe module provides functions to log messages at different severity levels (INFO, DEBUG, WARNING, ERROR, FATAL) with timestamped entries. \nUsers can close the logging process as needed, and the module handles customization for console and file output.",
-    "parsed_at": 1720129713,
+    "parsed_at": 1725691148,
     "path": "coresdk/src/coresdk/logging.h",
     "functions": [
       {
@@ -29796,7 +29796,7 @@
     "group": "physics",
     "brief": "Provides matrix functions to work on 2d coordinates.",
     "description": null,
-    "parsed_at": 1720129716,
+    "parsed_at": 1725691148,
     "path": "coresdk/src/coresdk/matrix_2d.h",
     "functions": [
       {
@@ -30534,7 +30534,7 @@
     "group": "input",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129718,
+    "parsed_at": 1725691149,
     "path": "coresdk/src/coresdk/mouse_input.h",
     "functions": [
       {
@@ -31021,7 +31021,7 @@
     "group": "audio",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129721,
+    "parsed_at": 1725691150,
     "path": "coresdk/src/coresdk/music.h",
     "functions": [
       {
@@ -32051,7 +32051,7 @@
     "group": "networking",
     "brief": "SplashKit's network-related functions allow you to communicate data\nacross networks.",
     "description": null,
-    "parsed_at": 1720129731,
+    "parsed_at": 1725691152,
     "path": "coresdk/src/coresdk/networking.h",
     "functions": [
       {
@@ -33079,6 +33079,43 @@
         }
       },
       {
+        "signature": "string dec_to_ipv4(unsigned int ip);",
+        "name": "dec_to_ipv4",
+        "method_name": null,
+        "unique_global_name": "dec_to_ipv4",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Decodes the supplied unsigned 32-bit integer into its ipv4 address form\ne.g. 2130706433 into 127.0.0.1",
+        "brief": "Decodes an integer into its ipv4 address representation",
+        "return": {
+          "type": "string",
+          "description": "ipv4 address string in X.X.X.X format",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "ip": {
+            "type": "unsigned int",
+            "description": "integer to be decoded",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "networking",
+          "static": "networking"
+        }
+      },
+      {
         "signature": "connection fetch_new_connection(server_socket server);",
         "name": "fetch_new_connection",
         "method_name": "fetch_new_connection",
@@ -33496,43 +33533,6 @@
             "is_pointer": false,
             "is_const": true,
             "is_reference": true,
-            "is_array": false,
-            "array_dimension_sizes": [
-
-            ],
-            "is_vector": false,
-            "type_parameter": null
-          }
-        },
-        "attributes": {
-          "group": "networking",
-          "static": "networking"
-        }
-      },
-      {
-        "signature": "string ipv4_to_str(unsigned int ip);",
-        "name": "ipv4_to_str",
-        "method_name": null,
-        "unique_global_name": "ipv4_to_str",
-        "unique_method_name": null,
-        "suffix_name": null,
-        "description": "Decodes the supplied unsigned 32 bit integer into it's ipv4 address form\ne.g. 2130706433 into 127.0.0.1",
-        "brief": "Decodes an integer into it's ipv4 address representation",
-        "return": {
-          "type": "string",
-          "description": "ipv4 address string in X.X.X.X format",
-          "is_pointer": false,
-          "is_reference": false,
-          "is_vector": false,
-          "type_parameter": null
-        },
-        "parameters": {
-          "ip": {
-            "type": "unsigned int",
-            "description": "integer to be decoded",
-            "is_pointer": false,
-            "is_const": false,
-            "is_reference": false,
             "is_array": false,
             "array_dimension_sizes": [
 
@@ -35195,7 +35195,7 @@
     "group": "physics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129732,
+    "parsed_at": 1725691152,
     "path": "coresdk/src/coresdk/physics.h",
     "functions": [
 
@@ -35217,7 +35217,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129736,
+    "parsed_at": 1725691153,
     "path": "coresdk/src/coresdk/point_drawing.h",
     "functions": [
       {
@@ -36537,7 +36537,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129739,
+    "parsed_at": 1725691154,
     "path": "coresdk/src/coresdk/point_geometry.h",
     "functions": [
       {
@@ -37561,7 +37561,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129741,
+    "parsed_at": 1725691155,
     "path": "coresdk/src/coresdk/quad_geometry.h",
     "functions": [
       {
@@ -38026,7 +38026,7 @@
     "group": "utilities",
     "brief": "SplashKit random provides a simple implementation of random.",
     "description": "The SplashKit`s random library provides two rnd methods, a `rnd()` which generates\na random number between 0 and 1, and `rnd(int ubound)` which\ngenerates a random number between 0 and the value scpeficied in `ubound`.",
-    "parsed_at": 1720129742,
+    "parsed_at": 1725691155,
     "path": "coresdk/src/coresdk/random.h",
     "functions": [
       {
@@ -38160,7 +38160,7 @@
     "group": "raspberry",
     "brief": "Splashkit allows you to read and write to the GPIO pins on the Raspberry Pi.",
     "description": null,
-    "parsed_at": 1720129744,
+    "parsed_at": 1725691155,
     "path": "coresdk/src/coresdk/raspi_gpio.h",
     "functions": [
       {
@@ -38627,7 +38627,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129753,
+    "parsed_at": 1725691157,
     "path": "coresdk/src/coresdk/rectangle_drawing.h",
     "functions": [
       {
@@ -41520,7 +41520,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129755,
+    "parsed_at": 1725691158,
     "path": "coresdk/src/coresdk/rectangle_geometry.h",
     "functions": [
       {
@@ -42306,7 +42306,7 @@
     "group": "resources",
     "brief": "SplashKit resource functions allow you to locate resources in a\nproject's `Resources` folder.",
     "description": null,
-    "parsed_at": 1720129757,
+    "parsed_at": 1725691158,
     "path": "coresdk/src/coresdk/resources.h",
     "functions": [
       {
@@ -42624,7 +42624,7 @@
     "group": "audio",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129760,
+    "parsed_at": 1725691159,
     "path": "coresdk/src/coresdk/sound.h",
     "functions": [
       {
@@ -43633,7 +43633,7 @@
     "group": "sprites",
     "brief": "SplashKit Sprites allows you to create images you can easily\nmove and animate.",
     "description": "SplashKit sprites are game elements that can be moved, and animated. Sprites\nare located at a position in the game, have a velocity, and an animation.\nThe sprite can also have arbitary data associated with it for game specific\npurposes.",
-    "parsed_at": 1720129781,
+    "parsed_at": 1725691164,
     "path": "coresdk/src/coresdk/sprites.h",
     "functions": [
       {
@@ -50509,7 +50509,7 @@
     "group": "terminal",
     "brief": "SplashKit Terminal allows you to read and write values to the\nterminal in a consistent manner.",
     "description": null,
-    "parsed_at": 1720129783,
+    "parsed_at": 1725691164,
     "path": "coresdk/src/coresdk/terminal.h",
     "functions": [
       {
@@ -50929,7 +50929,7 @@
     "group": "graphics",
     "brief": "SplashKit Text allows for drawing text in a variety of ways to\ngraphic windows.",
     "description": null,
-    "parsed_at": 1720129791,
+    "parsed_at": 1725691166,
     "path": "coresdk/src/coresdk/text.h",
     "functions": [
       {
@@ -53856,7 +53856,7 @@
     "group": "input",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129793,
+    "parsed_at": 1725691167,
     "path": "coresdk/src/coresdk/text_input.h",
     "functions": [
       {
@@ -54391,7 +54391,7 @@
     "group": "timers",
     "brief": "Timers in SplashKit can be used to track the passing of time.",
     "description": null,
-    "parsed_at": 1720129796,
+    "parsed_at": 1725691167,
     "path": "coresdk/src/coresdk/timers.h",
     "functions": [
       {
@@ -55229,7 +55229,7 @@
     "group": "graphics",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129803,
+    "parsed_at": 1725691169,
     "path": "coresdk/src/coresdk/triangle_drawing.h",
     "functions": [
       {
@@ -57636,7 +57636,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129805,
+    "parsed_at": 1725691169,
     "path": "coresdk/src/coresdk/triangle_geometry.h",
     "functions": [
       {
@@ -57997,7 +57997,7 @@
     "group": "types",
     "brief": "SplashKit Types simplifies data type creation and management for streamlined programming.",
     "description": null,
-    "parsed_at": 1720129811,
+    "parsed_at": 1725691171,
     "path": "coresdk/src/coresdk/types.h",
     "functions": [
 
@@ -59028,7 +59028,7 @@
     "group": "utilities",
     "brief": "SplashKit provides miscellaneous utilities for unclassified functionality.",
     "description": null,
-    "parsed_at": 1720129812,
+    "parsed_at": 1725691171,
     "path": "coresdk/src/coresdk/utils.h",
     "functions": [
       {
@@ -59236,7 +59236,7 @@
     "group": "physics",
     "brief": "Provides vector functions to work on vectors.",
     "description": null,
-    "parsed_at": 1720129817,
+    "parsed_at": 1725691173,
     "path": "coresdk/src/coresdk/vector_2d.h",
     "functions": [
       {
@@ -60669,7 +60669,7 @@
     "group": "networking",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129819,
+    "parsed_at": 1725691173,
     "path": "coresdk/src/coresdk/web_client.h",
     "functions": [
       {
@@ -61264,7 +61264,7 @@
     "group": "networking",
     "brief": null,
     "description": null,
-    "parsed_at": 1720129825,
+    "parsed_at": 1725691174,
     "path": "coresdk/src/coresdk/web_server.h",
     "functions": [
       {
@@ -62983,7 +62983,7 @@
     "group": "windows",
     "brief": "Window Manager in SplashKit can be used create, and manipulate\ngraphics windows",
     "description": null,
-    "parsed_at": 1720129831,
+    "parsed_at": 1725691176,
     "path": "coresdk/src/coresdk/window_manager.h",
     "functions": [
       {

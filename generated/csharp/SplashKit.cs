@@ -3075,6 +3075,9 @@ namespace SplashKitSDK
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__dec_to_hex__unsigned_int", CharSet=CharSet.Ansi)]
     private static extern __sklib_string __sklib__dec_to_hex__unsigned_int(uint aDec);
 
+    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__dec_to_ipv4__unsigned_int", CharSet=CharSet.Ansi)]
+    private static extern __sklib_string __sklib__dec_to_ipv4__unsigned_int(uint ip);
+
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__fetch_new_connection__server_socket", CharSet=CharSet.Ansi)]
     private static extern __sklib_ptr __sklib__fetch_new_connection__server_socket(__sklib_ptr server);
 
@@ -3110,9 +3113,6 @@ namespace SplashKitSDK
 
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__ipv4_to_hex__string_ref", CharSet=CharSet.Ansi)]
     private static extern __sklib_string __sklib__ipv4_to_hex__string_ref(__sklib_string aIP);
-
-    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__ipv4_to_str__unsigned_int", CharSet=CharSet.Ansi)]
-    private static extern __sklib_string __sklib__ipv4_to_str__unsigned_int(uint ip);
 
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__is_connection_open__connection", CharSet=CharSet.Ansi)]
     private static extern int __sklib__is_connection_open__connection(__sklib_ptr con);
@@ -10707,6 +10707,14 @@ namespace SplashKitSDK
       __skreturn = __sklib__dec_to_hex__unsigned_int(__skparam__a_dec);
       return __skadapter__to_string(__skreturn);
     }
+    public static string DecToIpv4(uint ip)
+    {
+      uint __skparam__ip;
+      __sklib_string __skreturn;
+      __skparam__ip = __skadapter__to_sklib_unsigned_int(ip);
+      __skreturn = __sklib__dec_to_ipv4__unsigned_int(__skparam__ip);
+      return __skadapter__to_string(__skreturn);
+    }
     public static Connection FetchNewConnection(ServerSocket server)
     {
       __sklib_ptr __skparam__server;
@@ -10804,14 +10812,6 @@ namespace SplashKitSDK
       __skparam__a_ip = __skadapter__to_sklib_string(aIP);
       __skreturn = __sklib__ipv4_to_hex__string_ref(__skparam__a_ip);
     __skadapter__free__sklib_string(ref __skparam__a_ip);
-      return __skadapter__to_string(__skreturn);
-    }
-    public static string Ipv4ToStr(uint ip)
-    {
-      uint __skparam__ip;
-      __sklib_string __skreturn;
-      __skparam__ip = __skadapter__to_sklib_unsigned_int(ip);
-      __skreturn = __sklib__ipv4_to_str__unsigned_int(__skparam__ip);
       return __skadapter__to_string(__skreturn);
     }
     public static bool IsConnectionOpen(Connection con)
