@@ -32051,7 +32051,7 @@
     "group": "networking",
     "brief": "SplashKit's network-related functions allow you to communicate data\nacross networks.",
     "description": null,
-    "parsed_at": 1725691152,
+    "parsed_at": 1726736359,
     "path": "coresdk/src/coresdk/networking.h",
     "functions": [
       {
