@@ -1,0 +1,19 @@
+decimal to binary
+binary to decimal
+
+hex to binary
+binary to hex 
+
+bas64 encoding and decoding
+
+decimal to octal
+octal to decimal
+
+validate IP address would be called "is ipv4" 
+
+generate IP address 
+
+generate mac address 
+
+mac address to hex
+hex to mac address
