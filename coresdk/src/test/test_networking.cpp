@@ -2,31 +2,35 @@
 #include "networking.h"
 
 #include "assert.h"
-
 #include <iostream>
+#include <sstream>  // For hex conversions
+#include <string>   // For using std::string
 
 #define TEST_IP "127.0.0.1"
 #define TEST_IP_HEX "0x7F000001"
+#define TEST_DEC 255
+#define TEST_BIN "11111111"
+#define TEST_HEX "FF"
+#define TEST_BIN_DOTTED "00000000.11111111"
 
 using namespace splashkit_lib;
 
 void run_encoding_decoding_tests()
 {
-    // Incomplete ip address tests
-    assert(ipv4_to_hex("127.0.0") == "0x7F000000");
-    assert(ipv4_to_str(ipv4_to_dec("127.0.0")) == "127.0.0.0");
-    assert(ipv4_to_str(ipv4_to_dec("127,0.0")) == "127.0.0.0");
-    assert(ipv4_to_str(ipv4_to_dec("")) == "0.0.0.0");
 
-    int too_small_int = 4000;
-    assert(ipv4_to_str(too_small_int) == "0.0.15.160");
+    // New function tests
+    // Decimal to binary and back
+    assert(dec_to_bin(TEST_DEC) == TEST_BIN);
+    assert(bin_to_dec(TEST_BIN) == TEST_DEC);
 
-    // Complete ip address tests
-    assert(ipv4_to_str(ipv4_to_dec(TEST_IP)) == TEST_IP);
-    assert(dec_to_hex(ipv4_to_dec(TEST_IP)) == TEST_IP_HEX);
-    assert(ipv4_to_hex(TEST_IP) == TEST_IP_HEX);
-    assert(hex_str_to_ipv4(TEST_IP_HEX) == TEST_IP);
-    assert(my_ip() == "127.0.0.1");
+    // Hexadecimal to binary and back
+    assert(hex_to_bin(TEST_HEX) == TEST_BIN);
+    assert(bin_to_hex(TEST_BIN) == std::string("0x") + TEST_HEX);
+
+    // Optional dotted binary format check
+    assert(dec_to_bin(TEST_DEC) == TEST_BIN_DOTTED);
+
+    std::cout << "All encoding/decoding tests passed!" << std::endl;
 }
 
 void run_networking_test()

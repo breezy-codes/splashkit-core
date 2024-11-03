@@ -1290,28 +1290,33 @@ namespace splashkit_lib
         return "127.0.0.1";
     }
 
-    string dec_to_bin(unsigned int dec)
+    std::string dec_to_bin(unsigned int dec)
     {
-        stringstream bin_string;
+        std::stringstream bin_string;
         for (int i = 31; i >= 0; --i)
         {
             bin_string << ((dec >> i) & 1);
-            if (i % 8 == 0 && i != 0)
-                bin_string << "."; // Insert a dot for clarity, if desired.
+            if (i % 8 == 0 && i != 0)  // Add a dot every 8 bits for readability
+            {
+                bin_string << ".";
+            }
         }
         return bin_string.str();
     }
 
-    unsigned int bin_to_dec(const string &bin)
+    unsigned int bin_to_dec(const std::string &bin)
     {
         unsigned int dec = 0;
         int pos = 0;
+
         for (int i = bin.length() - 1; i >= 0; --i)
         {
-            if (bin[i] != '.')
+            if (bin[i] != '.')  // Ignore dots
             {
                 if (bin[i] == '1')
-                    dec += (1 << pos);
+                {
+                    dec += (1 << pos);  // Apply the appropriate power of 2
+                }
                 pos++;
             }
         }

@@ -17,9 +17,9 @@
 
 #include "types.h"
 
+using std::map;
 using std::string;
 using std::vector;
-using std::map;
 
 namespace splashkit_lib
 {
@@ -155,7 +155,7 @@ namespace splashkit_lib
      * @attribute getter has_new_connections
      */
     bool server_has_new_connection(server_socket server);
-    
+
     /**
      * Get the number of new connections made to the server.
      * The count will increase as the server accepts new connections.
@@ -169,7 +169,7 @@ namespace splashkit_lib
      * @attribute getter new_connection_count
      */
     int new_connection_count(server_socket server);
-    
+
     /**
      * Get the oldest new connections made to the server, and
      * reduces the new connection count by 1.
@@ -181,7 +181,7 @@ namespace splashkit_lib
      * @attribute method fetch_new_connection
      */
     connection fetch_new_connection(server_socket server);
-    
+
     /**
      * Allows you to reset the new connection count to 0.
      * (The connections are kept)
@@ -857,7 +857,7 @@ namespace splashkit_lib
      *
      * @return hexadecimal representation of ipc4 string
      */
-    string ipv4_to_hex(const string& a_ip);
+    string ipv4_to_hex(const string &a_ip);
 
     /**
      * @brief Encodes ipv4 string into single integer
@@ -891,5 +891,54 @@ namespace splashkit_lib
      * @return ipv4 address string in X.X.X.X format
      */
     string my_ip();
+
+    /**
+     * @brief Converts an unsigned integer to its binary representation as a string
+     *
+     * Converts the supplied unsigned integer into a binary string representation,
+     * inserting dots for clarity every 8 bits if desired. e.g., 255 into "00000000.11111111".
+     *
+     * @param dec the unsigned integer to be converted
+     *
+     * @returns binary string in a 32-bit format
+     */
+    string dec_to_bin(unsigned int dec);
+
+    /**
+     * @brief Converts a binary string representation to an unsigned integer
+     *
+     * Converts a binary string representation (with optional dot separators)
+     * back to an unsigned integer. e.g., "00000000.11111111" into 255.
+     *
+     * @param bin the binary string to be converted
+     *
+     * @returns unsigned integer representation of the binary input
+     */
+    unsigned int bin_to_dec(const string &bin);
+
+    /**
+     * @brief Converts a hexadecimal string to its binary representation as a string
+     *
+     * Converts a hexadecimal string (e.g., "A3") into a binary string
+     * representation. Each hex character is converted into its 4-bit binary form.
+     *
+     * @param hex the hexadecimal string to be converted
+     *
+     * @returns binary string representation of the hexadecimal input
+     */
+    string hex_to_bin(const string &hex);
+
+    /**
+     * @brief Converts a binary string to its hexadecimal representation as a string
+     *
+     * Converts a binary string (in groups of 4 bits) to its hexadecimal representation.
+     * e.g., "1010 0011" into "A3".
+     *
+     * @param bin the binary string to be converted
+     *
+     * @returns hexadecimal string representation of the binary input
+     */
+    string bin_to_hex(const string &bin);
+
 }
-#endif //SPLASHKIT_NETWORKING_H
+#endif // SPLASHKIT_NETWORKING_H
