@@ -9,18 +9,17 @@
 #include "utility_functions.h"
 
 using std::endl;
+using std::hex;
+using std::setfill;
+using std::setw;
 using std::stringstream;
 using std::to_string;
 using std::uppercase;
-using std::hex;
-using std::setw;
-using std::setfill;
 
 namespace splashkit_lib
 {
-    #define PACKET_SIZE 512
+#define PACKET_SIZE 512
     static unsigned int UDP_PACKET_SIZE = 1024;
-
 
     typedef char packet_data[PACKET_SIZE];
     typedef unsigned char byte;
@@ -90,7 +89,7 @@ namespace splashkit_lib
 
         clear_messages(svr);
 
-        for(auto connection : svr->connections)
+        for (auto connection : svr->connections)
         {
             close_connection(connection);
         }
@@ -113,7 +112,8 @@ namespace splashkit_lib
 
     void close_all_servers()
     {
-        FREE_ALL_FROM_MAP( _server_sockets, SERVER_SOCKET_PTR, [] (server_socket svr) { close_server(svr); } );
+        FREE_ALL_FROM_MAP(_server_sockets, SERVER_SOCKET_PTR, [](server_socket svr)
+                          { close_server(svr); });
     }
 
     bool has_server(const string &name)
@@ -139,7 +139,7 @@ namespace splashkit_lib
 
     bool has_new_connections()
     {
-        for(auto const &pair : _server_sockets)
+        for (auto const &pair : _server_sockets)
         {
             if (server_has_new_connection(pair.second))
             {
@@ -149,7 +149,7 @@ namespace splashkit_lib
         return false;
     }
 
-    connection _create_connection(const string& name, connection_type protocol)
+    connection _create_connection(const string &name, connection_type protocol)
     {
         connection result = new sk_connection_data;
 
@@ -159,7 +159,7 @@ namespace splashkit_lib
         result->string_ip = "";
         result->port = 0;
         result->protocol = protocol;
-        //result->part_msg_data is empty
+        // result->part_msg_data is empty
         result->expected_msg_len = -1;
         result->open = true;
         result->socket._socket = nullptr;
@@ -168,7 +168,7 @@ namespace splashkit_lib
         return result;
     }
 
-    bool _establish_connection(connection con, const string& host, unsigned short int port, connection_type protocol)
+    bool _establish_connection(connection con, const string &host, unsigned short int port, connection_type protocol)
     {
         con->string_ip = host;
         con->port = port;
@@ -227,7 +227,7 @@ namespace splashkit_lib
 
     void shut_connection(connection con)
     {
-        if ( INVALID_PTR(con, CONNECTION_PTR))
+        if (INVALID_PTR(con, CONNECTION_PTR))
         {
             LOG(WARNING) << "Attempting to shut invalid connection";
             return;
@@ -252,7 +252,7 @@ namespace splashkit_lib
 
     connection retrieve_connection(server_socket server, int idx)
     {
-        if ( INVALID_PTR(server, SERVER_SOCKET_PTR) )
+        if (INVALID_PTR(server, SERVER_SOCKET_PTR))
         {
             LOG(WARNING) << "Attempting to get connection from invalid server";
             return nullptr;
@@ -263,7 +263,8 @@ namespace splashkit_lib
 
     void close_all_connections()
     {
-        FREE_ALL_FROM_MAP(_connections, CONNECTION_PTR, [] (connection con) { close_connection(con); });
+        FREE_ALL_FROM_MAP(_connections, CONNECTION_PTR, [](connection con)
+                          { close_connection(con); });
     }
 
     bool close_connection(connection con)
@@ -294,11 +295,11 @@ namespace splashkit_lib
 
                 if (idx > -1)
                 {
-                    if ( idx >= s->connections.size() - s->new_connections )
+                    if (idx >= s->connections.size() - s->new_connections)
                     {
                         s->new_connections--;
                     }
-                    
+
                     result = true;
                     con->id = NONE_PTR;
                     delete con;
@@ -322,7 +323,7 @@ namespace splashkit_lib
 
     unsigned int connection_count(server_socket server)
     {
-        if ( INVALID_PTR(server, SERVER_SOCKET_PTR))
+        if (INVALID_PTR(server, SERVER_SOCKET_PTR))
         {
             LOG(WARNING) << "Attempting to count connections of invalid server socket";
             return 0;
@@ -338,7 +339,7 @@ namespace splashkit_lib
 
     unsigned int connection_ip(connection a_connection)
     {
-        if ( INVALID_PTR(a_connection, CONNECTION_PTR) )
+        if (INVALID_PTR(a_connection, CONNECTION_PTR))
         {
             LOG(WARNING) << "Attempting to get ip of invalid connection";
             return 0;
@@ -348,7 +349,7 @@ namespace splashkit_lib
 
     connection connection_named(const string &name)
     {
-        if ( has_connection(name))
+        if (has_connection(name))
         {
             return _connections[name];
         }
@@ -372,7 +373,7 @@ namespace splashkit_lib
     {
         return is_connection_open(connection_named(name));
     }
-    
+
     int new_connection_count(server_socket server)
     {
         if (INVALID_PTR(server, SERVER_SOCKET_PTR))
@@ -380,10 +381,10 @@ namespace splashkit_lib
             LOG(WARNING) << "Invalid server_socket for number of new connections";
             return 0;
         }
-        
+
         return server->new_connections;
     }
-    
+
     connection fetch_new_connection(server_socket server)
     {
         if (INVALID_PTR(server, SERVER_SOCKET_PTR))
@@ -391,19 +392,20 @@ namespace splashkit_lib
             LOG(WARNING) << "Invalid server_socket for fetching new connection";
             return nullptr;
         }
-        
-        if ( server->new_connections == 0 || server->connections.size() == 0 ) return nullptr;
-        
+
+        if (server->new_connections == 0 || server->connections.size() == 0)
+            return nullptr;
+
         connection result;
-        if ( server->new_connections > server->connections.size() )
+        if (server->new_connections > server->connections.size())
             result = server->connections[0];
         else
             result = *(server->connections.end() - server->new_connections);
-        
+
         server->new_connections--;
         return result;
     }
-    
+
     void reset_new_connection_count(server_socket server)
     {
         if (INVALID_PTR(server, SERVER_SOCKET_PTR))
@@ -411,7 +413,7 @@ namespace splashkit_lib
             LOG(WARNING) << "Invalid server_socket for reset new connection count";
             return;
         }
-        
+
         server->new_connections = 0;
     }
 
@@ -445,7 +447,6 @@ namespace splashkit_lib
         return false;
     }
 
-
     bool accept_all_new_connections()
     {
         bool result = false;
@@ -463,7 +464,7 @@ namespace splashkit_lib
 
     unsigned short int connection_port(connection a_connection)
     {
-        if ( INVALID_PTR(a_connection, CONNECTION_PTR))
+        if (INVALID_PTR(a_connection, CONNECTION_PTR))
         {
             LOG(WARNING) << "Attempting to get port of invalid connection";
             return 0;
@@ -478,7 +479,7 @@ namespace splashkit_lib
 
     connection last_connection(server_socket server)
     {
-        if ( INVALID_PTR(server, SERVER_SOCKET_PTR))
+        if (INVALID_PTR(server, SERVER_SOCKET_PTR))
         {
             LOG(WARNING) << "Attempting to get last connection from invalid server socket";
             return nullptr;
@@ -503,7 +504,7 @@ namespace splashkit_lib
 
     void reconnect(connection con)
     {
-        if ( INVALID_PTR(con, CONNECTION_PTR))
+        if (INVALID_PTR(con, CONNECTION_PTR))
         {
             LOG(WARNING) << "Attempting to reconnect invalid connection";
             return;
@@ -524,7 +525,7 @@ namespace splashkit_lib
 
     connection message_connection(message msg)
     {
-        if ( INVALID_PTR(msg, MESSAGE_PTR))
+        if (INVALID_PTR(msg, MESSAGE_PTR))
         {
             LOG(WARNING) << "Attempting to get connection of invalid message";
             return nullptr;
@@ -545,7 +546,7 @@ namespace splashkit_lib
 
     void _enqueue_tcp_message(const vector<int8_t> &message, connection con)
     {
-        sk_message* m = new sk_message;
+        sk_message *m = new sk_message;
 
         m->id = MESSAGE_PTR;
         m->data = message;
@@ -559,7 +560,7 @@ namespace splashkit_lib
         con->part_msg_data.clear();
     }
 
-    void _enqueue_udp_message(vector<sk_message*> &messages, const char* msg, unsigned long size, unsigned int host, int port)
+    void _enqueue_udp_message(vector<sk_message *> &messages, const char *msg, unsigned long size, unsigned int host, int port)
     {
         message m = new sk_message;
         m->id = MESSAGE_PTR;
@@ -574,7 +575,7 @@ namespace splashkit_lib
         messages.push_back(m);
     }
 
-    bool _read_udp_message_from(sk_network_connection con, vector<message>& messages)
+    bool _read_udp_message_from(sk_network_connection con, vector<message> &messages)
     {
         if (sk_connection_has_data(&con) > 0)
         {
@@ -598,8 +599,7 @@ namespace splashkit_lib
                 }
 
                 times += 1;
-            }
-            while (((size != 0) && (host != 0)) || (times < 10));
+            } while (((size != 0) && (host != 0)) || (times < 10));
 
             return true;
         }
@@ -618,12 +618,12 @@ namespace splashkit_lib
         while (buf_idx < received_count) // there is data to read...
         {
             // Work out the message length...
-            if (con->expected_msg_len > 0)   // we are part way though a message...
+            if (con->expected_msg_len > 0) // we are part way though a message...
             {
-                msg = con->part_msg_data;                              // get the part
-                msg_len = con->expected_msg_len - msg.size();      // How much left to read...
-                con->expected_msg_len = -1;                          // Reset length of message to "no message"
-                con->part_msg_data.clear();                            // Reset part of message
+                msg = con->part_msg_data;                     // get the part
+                msg_len = con->expected_msg_len - msg.size(); // How much left to read...
+                con->expected_msg_len = -1;                   // Reset length of message to "no message"
+                con->part_msg_data.clear();                   // Reset part of message
             }
             else // This is a new message... get its size.
             {
@@ -700,7 +700,8 @@ namespace splashkit_lib
                     packet_data buffer;
                     int received = sk_read_bytes(&con->socket, buffer, 512);
 
-                    if (received <= 0) {
+                    if (received <= 0)
+                    {
                         // shut_connection
                         LOG(DEBUG) << "No data received in _c_c_for_data";
                         return false;
@@ -766,11 +767,11 @@ namespace splashkit_lib
 
     void broadcast_message(const string &a_msg)
     {
-        for(auto const& tcp_server: _server_sockets)
+        for (auto const &tcp_server : _server_sockets)
         {
             broadcast_message(a_msg, tcp_server.second);
         }
-        for (auto const& udp_connection: _connections)
+        for (auto const &udp_connection : _connections)
         {
             send_message_to(a_msg, udp_connection.second);
         }
@@ -789,7 +790,7 @@ namespace splashkit_lib
             return;
         }
 
-        for (auto const& tcp_connection: svr->connections)
+        for (auto const &tcp_connection : svr->connections)
         {
             send_message_to(a_msg, tcp_connection);
         }
@@ -797,7 +798,7 @@ namespace splashkit_lib
 
     void clear_messages(server_socket svr)
     {
-        if ( INVALID_PTR(svr, SERVER_SOCKET_PTR))
+        if (INVALID_PTR(svr, SERVER_SOCKET_PTR))
         {
             return;
         }
@@ -807,7 +808,7 @@ namespace splashkit_lib
 
     void clear_messages(connection a_connection)
     {
-        if ( INVALID_PTR(a_connection, CONNECTION_PTR))
+        if (INVALID_PTR(a_connection, CONNECTION_PTR))
         {
             return;
         }
@@ -841,14 +842,14 @@ namespace splashkit_lib
 
     bool has_messages()
     {
-        for(auto &tcp_server: _server_sockets)
+        for (auto &tcp_server : _server_sockets)
         {
             if (has_messages(tcp_server.second))
             {
                 return true;
             }
         }
-        for (auto &udp_connection: _connections)
+        for (auto &udp_connection : _connections)
         {
             if (has_messages(udp_connection.second))
             {
@@ -878,12 +879,12 @@ namespace splashkit_lib
             return false;
         }
 
-        if ( !svr->messages.empty() )
+        if (!svr->messages.empty())
         {
             return true;
         }
 
-        for(connection con : svr->connections)
+        for (connection con : svr->connections)
         {
             if (has_messages(con))
             {
@@ -898,7 +899,7 @@ namespace splashkit_lib
     {
         if (has_connection(name))
             return has_messages(connection_named(name));
-        else if ( has_server(name))
+        else if (has_server(name))
             return has_messages(server_named(name));
         else
         {
@@ -909,9 +910,9 @@ namespace splashkit_lib
 
     unsigned int message_count(const string &name)
     {
-        if ( has_connection(name) )
+        if (has_connection(name))
             return message_count(connection_named(name));
-        else if ( has_server(name) )
+        else if (has_server(name))
             return message_count(server_named(name));
         else
         {
@@ -952,7 +953,8 @@ namespace splashkit_lib
 
         string result = "";
 
-        for(char ch : msg->data) result += ch;
+        for (char ch : msg->data)
+            result += ch;
 
         return result;
     }
@@ -1049,23 +1051,22 @@ namespace splashkit_lib
 
         return nullptr;
     }
-    
+
     message read_message()
     {
-        for(auto const& tcp_server: _server_sockets)
+        for (auto const &tcp_server : _server_sockets)
         {
-            if ( has_messages(tcp_server.second) )
+            if (has_messages(tcp_server.second))
                 return read_message(tcp_server.second);
         }
-        for (auto const& con: _connections)
+        for (auto const &con : _connections)
         {
-            if ( con.second->messages.size() > 0 )
+            if (con.second->messages.size() > 0)
                 return read_message(con.second);
         }
-        
+
         return nullptr;
     }
-    
 
     string read_message_data(connection con)
     {
@@ -1203,10 +1204,10 @@ namespace splashkit_lib
     string hex_str_to_ipv4(const string &a_hex)
     {
         stringstream ipv4_string;
-        ipv4_string << hex_to_dec_string(a_hex.substr(2,2));
-        ipv4_string << "." << hex_to_dec_string(a_hex.substr(4,2));
-        ipv4_string << "."<< hex_to_dec_string(a_hex.substr(6,2));
-        ipv4_string << "." << hex_to_dec_string(a_hex.substr(8,2));
+        ipv4_string << hex_to_dec_string(a_hex.substr(2, 2));
+        ipv4_string << "." << hex_to_dec_string(a_hex.substr(4, 2));
+        ipv4_string << "." << hex_to_dec_string(a_hex.substr(6, 2));
+        ipv4_string << "." << hex_to_dec_string(a_hex.substr(8, 2));
         return ipv4_string.str();
     }
 
@@ -1231,7 +1232,7 @@ namespace splashkit_lib
 
     string dec_to_hex(unsigned int a_dec)
     {
-        uint32_t dec = (uint32_t) a_dec;
+        uint32_t dec = (uint32_t)a_dec;
         stringstream hex_string;
         hex_string << "0x" << uppercase << hex << dec;
         return hex_string.str();
@@ -1241,7 +1242,7 @@ namespace splashkit_lib
     {
         string::size_type lastpos = 0;
         unsigned int result = 0;
-        for(unsigned int i = 0; i < 4; i++)
+        for (unsigned int i = 0; i < 4; i++)
         {
             string::size_type pos = a_ip.find('.', lastpos);
             string token = pos == -1 ? a_ip.substr(lastpos) : a_ip.substr(lastpos, pos - lastpos);
@@ -1253,18 +1254,18 @@ namespace splashkit_lib
         return result;
     }
 
-    string ipv4_to_hex(const string& a_ip)
+    string ipv4_to_hex(const string &a_ip)
     {
         string::size_type lastpos = 0;
         stringstream hex_string;
         hex_string << "0x";
-        for(unsigned int i = 0; i < 4; i++)
+        for (unsigned int i = 0; i < 4; i++)
         {
             string::size_type pos = a_ip.find('.', lastpos);
             string token = pos == -1 ? a_ip.substr(lastpos) : a_ip.substr(lastpos, pos - lastpos);
 
             hex_string << setw(2) << setfill('0') << uppercase << hex
-            << (token == "" || (lastpos == 0 && i > 0) ? 0 : stoi(token));
+                       << (token == "" || (lastpos == 0 && i > 0) ? 0 : stoi(token));
 
             lastpos = pos + 1;
         }
@@ -1274,7 +1275,7 @@ namespace splashkit_lib
 
     string ipv4_to_str(unsigned int ip)
     {
-        uint32_t ipaddr = (uint32_t) ip;
+        uint32_t ipaddr = (uint32_t)ip;
         stringstream ip_string;
         ip_string << ((ipaddr >> 24) & 0xFF) << ".";
         ip_string << ((ipaddr >> 16) & 0xFF) << ".";
@@ -1288,4 +1289,65 @@ namespace splashkit_lib
         // TODO implement ip address resolution. Should return ip address of connected network if one exists.
         return "127.0.0.1";
     }
+
+    string dec_to_bin(unsigned int dec)
+    {
+        stringstream bin_string;
+        for (int i = 31; i >= 0; --i)
+        {
+            bin_string << ((dec >> i) & 1);
+            if (i % 8 == 0 && i != 0)
+                bin_string << "."; // Insert a dot for clarity, if desired.
+        }
+        return bin_string.str();
+    }
+
+    unsigned int bin_to_dec(const string &bin)
+    {
+        unsigned int dec = 0;
+        int pos = 0;
+        for (int i = bin.length() - 1; i >= 0; --i)
+        {
+            if (bin[i] != '.')
+            {
+                if (bin[i] == '1')
+                    dec += (1 << pos);
+                pos++;
+            }
+        }
+        return dec;
+    }
+
+    string hex_to_bin(const string &hex)
+    {
+        stringstream bin_string;
+        for (char hex_char : hex)
+        {
+            int val = (hex_char >= '0' && hex_char <= '9') ? (hex_char - '0') : (hex_char >= 'A' && hex_char <= 'F') ? (hex_char - 'A' + 10)
+                                                                            : (hex_char >= 'a' && hex_char <= 'f')   ? (hex_char - 'a' + 10)
+                                                                                                                     : 0;
+
+            for (int i = 3; i >= 0; --i)
+                bin_string << ((val >> i) & 1);
+        }
+        return bin_string.str();
+    }
+
+    string bin_to_hex(const string &bin)
+    {
+        stringstream hex_string;
+        for (size_t i = 0; i < bin.length(); i += 4)
+        {
+            int val = 0;
+            for (size_t j = 0; j < 4 && i + j < bin.length(); ++j)
+            {
+                val <<= 1;
+                if (bin[i + j] == '1')
+                    val |= 1;
+            }
+            hex_string << hex << uppercase << val;
+        }
+        return "0x" + hex_string.str();
+    }
+
 }
