@@ -1290,11 +1290,12 @@ namespace splashkit_lib
         return "127.0.0.1";
     }
 
-// Convert decimal (unsigned integer) to binary string without padding or dot-separated octets
+    // Convert decimal (unsigned integer) to binary string without padding or dot-separated octets
     string dec_to_bin(unsigned int a_dec)
     {
-        if (a_dec == 0) return "0";
-        
+        if (a_dec == 0)
+            return "0";
+
         string bin_string;
         while (a_dec > 0)
         {
@@ -1316,6 +1317,72 @@ namespace splashkit_lib
             }
         }
         return result;
+    }
+
+    // Convert hexadecimal string to binary string with correct width based on input
+    string hex_to_bin(const string &hex_str)
+    {
+        // Special case for input "0"
+        if (hex_str == "0")
+            return "0";
+
+        string bin_string;
+        for (char hex_char : hex_str)
+        {
+            int hex_val = 0;
+
+            // Convert hex character to integer
+            if (hex_char >= '0' && hex_char <= '9')
+                hex_val = hex_char - '0';
+            else if (hex_char >= 'A' && hex_char <= 'F')
+                hex_val = hex_char - 'A' + 10;
+            else if (hex_char >= 'a' && hex_char <= 'f')
+                hex_val = hex_char - 'a' + 10;
+
+            // Convert each hex digit to a 4-bit binary string
+            for (int i = 3; i >= 0; i--)
+            {
+                bin_string += ((hex_val >> i) & 1) ? '1' : '0';
+            }
+        }
+
+        // Remove leading zeros only for single-character hex values
+        if (hex_str.length() == 1)
+        {
+            size_t first_one = bin_string.find_first_not_of('0');
+            return (first_one == string::npos) ? "0" : bin_string.substr(first_one);
+        }
+
+        return bin_string;
+    }
+
+    // Convert binary string to hexadecimal string without removing leading zeros
+    string bin_to_hex(const string &bin_str)
+    {
+        string hex_string;
+        int length = bin_str.length();
+
+        // Pad binary string to be a multiple of 4
+        int padding = (4 - (length % 4)) % 4;
+        string padded_bin_str = string(padding, '0') + bin_str;
+
+        // Convert each 4-bit group to a hexadecimal digit
+        for (size_t i = 0; i < padded_bin_str.length(); i += 4)
+        {
+            int hex_val = 0;
+            for (size_t j = 0; j < 4; j++)
+            {
+                hex_val <<= 1;
+                if (padded_bin_str[i + j] == '1')
+                    hex_val |= 1;
+            }
+            // Convert `hex_val` to a hex character manually
+            if (hex_val < 10)
+                hex_string += '0' + hex_val;
+            else
+                hex_string += 'A' + (hex_val - 10);
+        }
+        return hex_string;
     }
 
 }

@@ -926,7 +926,7 @@ namespace splashkit_lib
      *
      * @returns binary string representation of the hexadecimal input
      */
-    string hex_to_bin(const string &hex);
+    string hex_to_bin(const string &hex_str);
 
     /**
      * @brief Converts a binary string to its hexadecimal representation as a string
@@ -938,7 +938,7 @@ namespace splashkit_lib
      *
      * @returns hexadecimal string representation of the binary input
      */
-    string bin_to_hex(const string &bin);
+    string bin_to_hex(const string &bin_str);
 
 }
 #endif // SPLASHKIT_NETWORKING_H
