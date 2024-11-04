@@ -940,5 +940,53 @@ namespace splashkit_lib
      */
     string bin_to_hex(const string &bin_str);
 
+    /**
+     * @brief Encodes a string to Base64 format
+     *
+     * Converts the provided string into its Base64 encoded representation.
+     * For example, "Man" will be converted to "TWFu".
+     *
+     * @param input String to encode
+     *
+     * @returns Base64 encoded string
+     */
+    string base64_encode(const string &input);
+
+    /**
+     * @brief Decodes a Base64 encoded string
+     *
+     * Converts the provided Base64 encoded string back to its original form.
+     * For example, "TWFu" will be converted to "Man".
+     *
+     * @param input Base64 encoded string to decode
+     *
+     * @returns Decoded original string
+     */
+    string base64_decode(const string &input);
+
+    /**
+     * @brief Converts a decimal (unsigned integer) to an octal string
+     *
+     * Converts the provided decimal value into its octal string representation.
+     * For example, 64 will be converted to "100".
+     *
+     * @param decimal_value Decimal (unsigned integer) to convert
+     *
+     * @returns Octal string representation of the decimal value
+     */
+    string dec_to_oct(unsigned int decimal_value);
+
+    /**
+     * @brief Converts an octal string to a decimal (unsigned integer)
+     *
+     * Converts the provided octal string into its decimal representation.
+     * For example, "100" will be converted to 64.
+     *
+     * @param octal_string Octal string to convert
+     *
+     * @returns Decimal (unsigned integer) representation of the octal string
+     */
+    unsigned int oct_to_dec(const string &octal_string);
+
 }
 #endif // SPLASHKIT_NETWORKING_H

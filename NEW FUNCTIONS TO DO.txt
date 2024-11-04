@@ -1,10 +1,13 @@
-decimal to binary
-binary to decimal
+I THINK THESE SHOULD BE UTILITIES:
 
-hex to binary
-binary to hex 
+decimal to binary - done
+binary to decimal - done
 
-bas64 encoding and decoding
+hex to binary - done
+binary to hex - done
+
+bas64 encoding - done
+base64 decoding - done
 
 decimal to octal
 octal to decimal

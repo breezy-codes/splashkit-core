@@ -19,6 +19,8 @@
 #include <string>
 #include <fstream>
 
+const string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
 using std::string;
 using std::ifstream;
 

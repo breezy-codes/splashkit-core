@@ -18,9 +18,10 @@ using std::uppercase;
 
 namespace splashkit_lib
 {
+
 #define PACKET_SIZE 512
     static unsigned int UDP_PACKET_SIZE = 1024;
-
+    const string BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     typedef char packet_data[PACKET_SIZE];
     typedef unsigned char byte;
 
@@ -1378,6 +1379,90 @@ namespace splashkit_lib
                 hex_string += 'A' + (hex_val - 10);
         }
         return hex_string;
+    }
+
+    // Function to encode a string to Base64
+    string base64_encode(const string &input)
+    {
+        string encoded;
+        int val = 0, bits = -6;
+        const unsigned int b63 = 0x3F;
+
+        for (unsigned char c : input)
+        {
+            val = (val << 8) + c;
+            bits += 8;
+
+            while (bits >= 0)
+            {
+                encoded.push_back(BASE64_CHARS[(val >> bits) & b63]);
+                bits -= 6;
+            }
+        }
+
+        if (bits > -6)
+        {
+            encoded.push_back(BASE64_CHARS[((val << 8) >> (bits + 8)) & b63]);
+        }
+
+        while (encoded.size() % 4)
+        {
+            encoded.push_back('='); // Padding to make the length a multiple of 4
+        }
+
+        return encoded;
+    }
+
+    // Function to decode a Base64 encoded string
+    string base64_decode(const string &input)
+    {
+        string decoded;
+        int val = 0, bits = -8;
+        for (unsigned char c : input)
+        {
+            if (BASE64_CHARS.find(c) == string::npos)
+            {
+                if (c == '=')
+                    break; // Padding character, stop decoding
+                continue;  // Ignore any characters not in Base64 alphabet
+            }
+
+            val = (val << 6) + BASE64_CHARS.find(c);
+            bits += 6;
+
+            if (bits >= 0)
+            {
+                decoded.push_back(char((val >> bits) & 0xFF));
+                bits -= 8;
+            }
+        }
+        return decoded;
+    }
+
+    // Convert decimal (unsigned integer) to octal string
+    string dec_to_oct(unsigned int decimal_value)
+    {
+        if (decimal_value == 0)
+            return "0";
+
+        string octal_string;
+        while (decimal_value > 0)
+        {
+            octal_string = to_string(decimal_value % 8) + octal_string;
+            decimal_value /= 8;
+        }
+        return octal_string;
+    }
+
+    // Convert octal string to decimal (unsigned integer)
+    unsigned int oct_to_dec(const string &octal_string)
+    {
+        unsigned int decimal_value = 0;
+        for (size_t i = 0; i < octal_string.size(); i++)
+        {
+            decimal_value = decimal_value * 8 + (octal_string[i] - '0');
+        }
+        return decimal_value;
     }
 
 }
