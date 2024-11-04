@@ -893,50 +893,50 @@ namespace splashkit_lib
     string my_ip();
 
     /**
-     * @brief Converts an unsigned integer to its binary representation as a string
+     * @brief Converts a decimal (unsigned integer) to a binary string
      *
-     * Converts the supplied unsigned integer into a binary string representation,
-     * inserting dots for clarity every 8 bits if desired. e.g., 255 into "00000000.11111111".
+     * Converts the provided unsigned integer into a binary string.
+     * For example, 10 will be converted to "1010".
      *
-     * @param dec the unsigned integer to be converted
+     * @param dec Decimal (unsigned integer) to convert
      *
-     * @returns binary string in a 32-bit format
+     * @returns Binary string representation of the decimal
      */
     string dec_to_bin(unsigned int dec);
 
     /**
-     * @brief Converts a binary string representation to an unsigned integer
+     * @brief Converts a binary string to a decimal (unsigned integer)
      *
-     * Converts a binary string representation (with optional dot separators)
-     * back to an unsigned integer. e.g., "00000000.11111111" into 255.
+     * Converts the provided binary string into an unsigned integer.
+     * For example, "1010" will be converted to 10.
      *
-     * @param bin the binary string to be converted
+     * @param bin Binary string to convert
      *
-     * @returns unsigned integer representation of the binary input
+     * @returns Decimal (unsigned integer) representation of the binary string
      */
     unsigned int bin_to_dec(const string &bin);
 
     /**
-     * @brief Converts a hexadecimal string to its binary representation as a string
+     * @brief Converts a hexadecimal string to a binary string
      *
-     * Converts a hexadecimal string (e.g., "A3") into a binary string
-     * representation. Each hex character is converted into its 4-bit binary form.
+     * Converts the provided hexadecimal string into its binary string representation.
+     * For example, "A" will be converted to "1010".
      *
-     * @param hex the hexadecimal string to be converted
+     * @param hex_str Hexadecimal string to convert
      *
-     * @returns binary string representation of the hexadecimal input
+     * @returns Binary string representation of the hexadecimal string
      */
     string hex_to_bin(const string &hex_str);
 
     /**
-     * @brief Converts a binary string to its hexadecimal representation as a string
+     * @brief Converts a binary string to a hexadecimal string
      *
-     * Converts a binary string (in groups of 4 bits) to its hexadecimal representation.
-     * e.g., "1010 0011" into "A3".
+     * Converts the provided binary string into a hexadecimal string representation.
+     * For example, "1010" will be converted to "A".
      *
-     * @param bin the binary string to be converted
+     * @param bin_str Binary string to convert
      *
-     * @returns hexadecimal string representation of the binary input
+     * @returns Hexadecimal string representation of the binary string
      */
     string bin_to_hex(const string &bin_str);
 
