@@ -9,10 +9,38 @@ binary to hex - done
 bas64 encoding - done
 base64 decoding - done
 
-decimal to octal
-octal to decimal
+decimal to octal - done
+octal to decimal - done
 
-validate IP address would be called "is ipv4" 
+Should move these from networking to utilities:
+dec to hex
+hex to dec 
+
+
+
+OTHER IDEAS AS UTILITIES:
+
+Check if a number is prime
+Check if a number is odd or even
+square root calculator
+gcd calculator
+lcm calculator
+factorial
+fibonacci
+square a number
+cube a number 
+product of digits (so 123 would be 1*2*3=6)
+sum of digits (so 123 would be 1+2+3=6)
+number reversal
+maximum digit number (so 123 would be 3)
+minimum digit number (so 123 would be 1)
+eulers totient function
+
+
+
+NETWORKING UTILITIES:
+
+validate IP address would be called "is ipv4" (uses regex)
 
 generate IP address 
 
@@ -20,3 +48,11 @@ generate mac address
 
 mac address to hex
 hex to mac address
+
+
+
+
+
+for talking to olivia - 
+But I'm a smidge concerned about doing my ideas because is there anyone actually in core/expansion? Or mentors? As it is, my PRs to core are still open.
+also discuss function ideas

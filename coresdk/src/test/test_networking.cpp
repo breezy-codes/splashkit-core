@@ -169,7 +169,7 @@ void test_base64_decode()
     std::cout << "All Base64 decoding tests passed!" << std::endl;
 }
 
-void test_dec_to_oct_and_oct_to_dec()
+void test_dec_to_oct()
 {
     // Basic decimal to octal cases
     assert(dec_to_oct(0) == "0");     // Zero case
@@ -177,7 +177,13 @@ void test_dec_to_oct_and_oct_to_dec()
     assert(dec_to_oct(64) == "100");  // Powers of 8
     assert(dec_to_oct(123) == "173"); // Arbitrary decimal to octal
     assert(dec_to_oct(255) == "377"); // Max 8-bit value
+    // Larger numbers
+    assert(dec_to_oct(1023) == "1777"); // Larger decimal to octal
+    assert(dec_to_oct(4095) == "7777"); // Edge of 12-bit value
 
+    std::cout << "All decimal to octal tests passed!" << std::endl;
+}
+void test_oct_to_dec(){
     // Basic octal to decimal cases
     assert(oct_to_dec("0") == 0);     // Zero case
     assert(oct_to_dec("10") == 8);    // Single-digit decimal result
@@ -185,14 +191,10 @@ void test_dec_to_oct_and_oct_to_dec()
     assert(oct_to_dec("173") == 123); // Arbitrary octal to decimal
     assert(oct_to_dec("377") == 255); // Max 8-bit value
 
-    // Larger numbers
-    assert(dec_to_oct(1023) == "1777"); // Larger decimal to octal
-    assert(dec_to_oct(4095) == "7777"); // Edge of 12-bit value
-
     assert(oct_to_dec("1777") == 1023); // Larger octal to decimal
     assert(oct_to_dec("7777") == 4095); // Edge of 12-bit value
 
-    std::cout << "All decimal to octal and octal to decimal tests passed!" << std::endl;
+    std::cout << "All octal to decimal tests passed!" << std::endl;
 }
 
 void run_networking_test()
@@ -203,5 +205,6 @@ void run_networking_test()
     bin_to_hex();
     test_base64_encode();
     test_base64_decode();
-    test_dec_to_oct_and_oct_to_dec();
+    test_dec_to_oct();
+    test_oct_to_dec();
 }
