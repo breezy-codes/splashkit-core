@@ -1290,69 +1290,32 @@ namespace splashkit_lib
         return "127.0.0.1";
     }
 
-    std::string dec_to_bin(unsigned int dec)
+// Convert decimal (unsigned integer) to binary string without padding or dot-separated octets
+    string dec_to_bin(unsigned int a_dec)
     {
-        std::stringstream bin_string;
-        for (int i = 31; i >= 0; --i)
+        if (a_dec == 0) return "0";
+        
+        string bin_string;
+        while (a_dec > 0)
         {
-            bin_string << ((dec >> i) & 1);
-            if (i % 8 == 0 && i != 0)  // Add a dot every 8 bits for readability
-            {
-                bin_string << ".";
-            }
+            bin_string = ((a_dec & 1) ? "1" : "0") + bin_string;
+            a_dec >>= 1;
         }
-        return bin_string.str();
+        return bin_string;
     }
 
-    unsigned int bin_to_dec(const std::string &bin)
+    // Convert binary string to decimal (unsigned integer)
+    unsigned int bin_to_dec(const string &bin_str)
     {
-        unsigned int dec = 0;
-        int pos = 0;
-
-        for (int i = bin.length() - 1; i >= 0; --i)
+        unsigned int result = 0;
+        for (size_t i = 0; i < bin_str.size(); i++)
         {
-            if (bin[i] != '.')  // Ignore dots
+            if (bin_str[i] == '1')
             {
-                if (bin[i] == '1')
-                {
-                    dec += (1 << pos);  // Apply the appropriate power of 2
-                }
-                pos++;
+                result += (1 << (bin_str.size() - i - 1));
             }
         }
-        return dec;
-    }
-
-    string hex_to_bin(const string &hex)
-    {
-        stringstream bin_string;
-        for (char hex_char : hex)
-        {
-            int val = (hex_char >= '0' && hex_char <= '9') ? (hex_char - '0') : (hex_char >= 'A' && hex_char <= 'F') ? (hex_char - 'A' + 10)
-                                                                            : (hex_char >= 'a' && hex_char <= 'f')   ? (hex_char - 'a' + 10)
-                                                                                                                     : 0;
-
-            for (int i = 3; i >= 0; --i)
-                bin_string << ((val >> i) & 1);
-        }
-        return bin_string.str();
-    }
-
-    string bin_to_hex(const string &bin)
-    {
-        stringstream hex_string;
-        for (size_t i = 0; i < bin.length(); i += 4)
-        {
-            int val = 0;
-            for (size_t j = 0; j < 4 && i + j < bin.length(); ++j)
-            {
-                val <<= 1;
-                if (bin[i + j] == '1')
-                    val |= 1;
-            }
-            hex_string << hex << uppercase << val;
-        }
-        return "0x" + hex_string.str();
+        return result;
     }
 
 }
