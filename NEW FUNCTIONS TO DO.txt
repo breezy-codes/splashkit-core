@@ -7,10 +7,10 @@ hex to binary - done
 binary to hex - done
 
 bas64 encoding - done
-base64 decoding - done
+base64 decoding - doing
 
-decimal to octal - done
-octal to decimal - done
+decimal to octal - doing
+octal to decimal - doing
 
 Should move these from networking to utilities:
 dec to hex
@@ -25,8 +25,6 @@ Check if a number is odd or even
 square root calculator
 gcd calculator
 lcm calculator
-factorial
-fibonacci
 square a number
 cube a number 
 product of digits (so 123 would be 1*2*3=6)
@@ -36,7 +34,8 @@ maximum digit number (so 123 would be 3)
 minimum digit number (so 123 would be 1)
 eulers totient function
 
-
+        factorial
+        fibonacci
 
 NETWORKING UTILITIES:
 

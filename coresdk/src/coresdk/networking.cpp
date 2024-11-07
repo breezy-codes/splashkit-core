@@ -1294,6 +1294,7 @@ namespace splashkit_lib
     // Convert decimal to binary string
     string dec_to_bin(unsigned int a_dec)
     {
+        // Without this check, dec to bin will not work if dec is 0
         if (a_dec == 0)
             return "0";
 
@@ -1323,9 +1324,6 @@ namespace splashkit_lib
     // Convert hexadecimal string to binary string
     string hex_to_bin(const string &hex_str)
     {
-        // Special case for input "0"
-        if (hex_str == "0")
-            return "0";
 
         string bin_string;
         for (char hex_char : hex_str)
