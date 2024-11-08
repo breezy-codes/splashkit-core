@@ -19,7 +19,6 @@ using std::vector;
 
 namespace splashkit_lib
 {
-    
     /**
      * Return a new string that removes the spaces from the start and end of
      * the input string.
@@ -91,7 +90,7 @@ namespace splashkit_lib
      */
     double convert_to_double(const string &text);
 
-        /**
+    /**
      * Returns the length of a string in characters.
      *
      * @param text      The text to get the length of
@@ -101,7 +100,7 @@ namespace splashkit_lib
 
     /**
      * Returns true if the string contains the substring.
-     * 
+     *
      * @param text      The text to search
      * @param subtext   The substring to search for
      * @returns         True if the substring is found in the text.
@@ -110,7 +109,7 @@ namespace splashkit_lib
 
     /**
      * Returns the index of the first occurrence of the substring in the text.
-     * 
+     *
      * @param text      The text to search
      * @param subtext   The substring to search for
      * @returns         The index of the first occurrence of the substring in the text, or -1 if the substring is not found.
@@ -119,7 +118,7 @@ namespace splashkit_lib
 
     /**
      * Replace all occurrences of a substring in a string with another string.
-     * 
+     *
      * @param text      The text to search
      * @param substr    The substring to find and replace
      * @param newText   The string to replace the substring with
@@ -129,12 +128,108 @@ namespace splashkit_lib
 
     /**
      * Split a string into an array of strings based on a delimiter.
-     * 
+     *
      * @param text      The text to split
      * @param delimiter The character to split the text on
      * @returns         An array of strings
      */
     vector<string> split(const string &text, char delimiter);
+
+    /**
+     * @brief Converts a decimal (unsigned integer) to a binary string
+     *
+     * Converts the provided unsigned integer into a binary string.
+     * For example, 10 will be converted to "1010".
+     *
+     * @param dec Decimal (unsigned integer) to convert
+     *
+     * @returns Binary string representation of the decimal
+     */
+    string dec_to_bin(unsigned int dec);
+
+    /**
+     * @brief Converts a binary string to a decimal (unsigned integer)
+     *
+     * Converts the provided binary string into an unsigned integer.
+     * For example, "1010" will be converted to 10.
+     *
+     * @param bin Binary string to convert
+     *
+     * @returns Decimal (unsigned integer) representation of the binary string
+     */
+    unsigned int bin_to_dec(const string &bin);
+
+    /**
+     * @brief Converts a hexadecimal string to a binary string
+     *
+     * Converts the provided hexadecimal string into its binary string representation.
+     * For example, "A" will be converted to "1010".
+     *
+     * @param hex_str Hexadecimal string to convert
+     *
+     * @returns Binary string representation of the hexadecimal string
+     */
+    string hex_to_bin(const string &hex_str);
+
+    /**
+     * @brief Converts a binary string to a hexadecimal string
+     *
+     * Converts the provided binary string into a hexadecimal string representation.
+     * For example, "1010" will be converted to "A".
+     *
+     * @param bin_str Binary string to convert
+     *
+     * @returns Hexadecimal string representation of the binary string
+     */
+    string bin_to_hex(const string &bin_str);
+
+    /**
+     * @brief Encodes a string to Base64 format
+     *
+     * Converts the provided string into its Base64 encoded representation.
+     * For example, "Man" will be converted to "TWFu".
+     *
+     * @param input String to encode
+     *
+     * @returns Base64 encoded string
+     */
+    string base64_encode(const string &input);
+
+    /**
+     * @brief Decodes a Base64 encoded string
+     *
+     * Converts the provided Base64 encoded string back to its original form.
+     * For example, "TWFu" will be converted to "Man".
+     *
+     * @param input Base64 encoded string to decode
+     *
+     * @returns Decoded original string
+     */
+    string base64_decode(const string &input);
+
+    /**
+     * @brief Converts a decimal (unsigned integer) to an octal string
+     *
+     * Converts the provided decimal value into its octal string representation.
+     * For example, 64 will be converted to "100".
+     *
+     * @param decimal_value Decimal (unsigned integer) to convert
+     *
+     * @returns Octal string representation of the decimal value
+     */
+    string dec_to_oct(unsigned int decimal_value);
+
+    /**
+     * @brief Converts an octal string to a decimal (unsigned integer)
+     *
+     * Converts the provided octal string into its decimal representation.
+     * For example, "100" will be converted to 64.
+     *
+     * @param octal_string Octal string to convert
+     *
+     * @returns Decimal (unsigned integer) representation of the octal string
+     */
+    unsigned int oct_to_dec(const string &octal_string);
 }
 
 #endif /* basics_hpp */
