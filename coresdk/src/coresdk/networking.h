@@ -923,5 +923,13 @@ namespace splashkit_lib
      * @return bool Returns true if the string is a valid IPv4 address, false otherwise
      */
     bool is_valid_ipv4(const string &ip);
+
+    /**
+     * @brief Validates if a given string represents a valid MAC address.
+     * 
+     * @param mac The string containing the MAC address to validate
+     * @return bool Returns true if the string is a valid MAC address, false otherwise
+     */
+    bool is_valid_mac(const std::string &mac);
 }
 #endif // SPLASHKIT_NETWORKING_H

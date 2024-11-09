@@ -1335,4 +1335,10 @@ namespace splashkit_lib
         return std::regex_match(ip, ip_pattern);
     }
 
+    bool is_valid_mac(const std::string &mac)
+    {
+        const std::regex mac_pattern("^([0-9A-Fa-f]{2}[-:]){5}([0-9A-Fa-f]{2})$");
+        return std::regex_match(mac, mac_pattern);
+    }
+
 }
