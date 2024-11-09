@@ -17,7 +17,6 @@ dec to hex
 hex to dec 
 
 
-
 OTHER IDEAS AS UTILITIES:
 
 Check if a number is prime
@@ -33,25 +32,14 @@ number reversal
 maximum digit number (so 123 would be 3)
 minimum digit number (so 123 would be 1)
 eulers totient function
-
         factorial
         fibonacci
 
-NETWORKING UTILITIES:
 
-validate IP address would be called "is ipv4" (uses regex)
 
-generate IP address 
-
-generate mac address 
-
+PRs DONE - 
 mac address to hex done
 hex to mac address done
+validate IP address
+Validate MAC address
 
-
-
-
-
-for talking to olivia - 
-But I'm a smidge concerned about doing my ideas because is there anyone actually in core/expansion? Or mentors? As it is, my PRs to core are still open.
-also discuss function ideas
