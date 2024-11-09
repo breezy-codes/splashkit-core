@@ -9,8 +9,8 @@ binary to hex - done
 bas64 encoding - done
 base64 decoding - doing
 
-decimal to octal - doing
-octal to decimal - doing
+decimal to octal - done
+octal to decimal - done
 
 Should move these from networking to utilities:
 dec to hex
