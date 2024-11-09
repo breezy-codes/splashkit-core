@@ -916,5 +916,6 @@ namespace splashkit_lib
      */
     string hex_to_mac(const string &hex_str);
 
+    bool is_valid_ipv4(const string &ip);
 }
 #endif // SPLASHKIT_NETWORKING_H

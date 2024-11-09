@@ -109,6 +109,11 @@ void hex_to_mac_test()
     std::cout << "-------------------------------------" << std::endl;
 }
 
+void is_valid_ip_test()
+{
+    
+}
+
 void run_networking_test()
 {
     ipv4_to_dec_test();
@@ -117,4 +122,5 @@ void run_networking_test()
     hex_str_to_ipv4_test();
     mac_to_hex_test();
     hex_to_mac_test();
+    is_valid_ip_test();
 }

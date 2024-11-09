@@ -45,8 +45,8 @@ generate IP address
 
 generate mac address 
 
-mac address to hex
-hex to mac address
+mac address to hex done
+hex to mac address done
 
 
 

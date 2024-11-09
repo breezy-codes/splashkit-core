@@ -1,6 +1,7 @@
 #include <sstream>
 #include <cmath>
 #include <iomanip>
+#include <regex>
 
 #include "easylogging++.h"
 
@@ -1325,6 +1326,15 @@ namespace splashkit_lib
         }
 
         return mac_string.str();
+    }
+
+    bool is_valid_ipv4(const string &ip)
+    {
+        const std::regex ip_pattern("^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
+                                    "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
+                                    "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
+                                    "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$");
+        return std::regex_match(ip, ip_pattern);
     }
 
 }
