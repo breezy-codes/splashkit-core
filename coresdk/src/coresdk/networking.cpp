@@ -1291,7 +1291,6 @@ namespace splashkit_lib
         return "127.0.0.1";
     }
 
-    // Converts a MAC address string (e.g., "01:23:45:67:89:AB") to a hexadecimal string.
     string mac_to_hex(const string &mac_address)
     {
         stringstream hex_string;
@@ -1311,7 +1310,6 @@ namespace splashkit_lib
         return hex_string.str();
     }
 
-    // Converts a hexadecimal string (e.g., "0x0123456789AB") to a MAC address string.
     string hex_to_mac(const string &hex_str)
     {
         stringstream mac_string;
