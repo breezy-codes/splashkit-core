@@ -1472,12 +1472,26 @@ sklib.__sklib__close_audio.argtypes = [  ]
 sklib.__sklib__close_audio.restype = None
 sklib.__sklib__open_audio.argtypes = [  ]
 sklib.__sklib__open_audio.restype = None
+sklib.__sklib__base64_decode__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__base64_decode__string_ref.restype = _sklib_string
+sklib.__sklib__base64_encode__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__base64_encode__string_ref.restype = _sklib_string
+sklib.__sklib__bin_to_dec__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__bin_to_dec__string_ref.restype = c_uint
+sklib.__sklib__bin_to_hex__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__bin_to_hex__string_ref.restype = _sklib_string
 sklib.__sklib__contains__string_ref__string_ref.argtypes = [ _sklib_string, _sklib_string ]
 sklib.__sklib__contains__string_ref__string_ref.restype = c_bool
 sklib.__sklib__convert_to_double__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__convert_to_double__string_ref.restype = c_double
 sklib.__sklib__convert_to_integer__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__convert_to_integer__string_ref.restype = c_int
+sklib.__sklib__dec_to_bin__unsigned_int.argtypes = [ c_uint ]
+sklib.__sklib__dec_to_bin__unsigned_int.restype = _sklib_string
+sklib.__sklib__dec_to_oct__unsigned_int.argtypes = [ c_uint ]
+sklib.__sklib__dec_to_oct__unsigned_int.restype = _sklib_string
+sklib.__sklib__hex_to_bin__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__hex_to_bin__string_ref.restype = _sklib_string
 sklib.__sklib__index_of__string_ref__string_ref.argtypes = [ _sklib_string, _sklib_string ]
 sklib.__sklib__index_of__string_ref__string_ref.restype = c_int
 sklib.__sklib__is_double__string_ref.argtypes = [ _sklib_string ]
@@ -1488,6 +1502,8 @@ sklib.__sklib__is_number__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__is_number__string_ref.restype = c_bool
 sklib.__sklib__length_of__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__length_of__string_ref.restype = c_int
+sklib.__sklib__oct_to_dec__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__oct_to_dec__string_ref.restype = c_uint
 sklib.__sklib__replace_all__string_ref__string_ref__string_ref.argtypes = [ _sklib_string, _sklib_string, _sklib_string ]
 sklib.__sklib__replace_all__string_ref__string_ref__string_ref.restype = _sklib_string
 sklib.__sklib__split__string_ref__char.argtypes = [ _sklib_string, c_char ]
@@ -2780,6 +2796,8 @@ sklib.__sklib__hex_str_to_ipv4__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__hex_str_to_ipv4__string_ref.restype = _sklib_string
 sklib.__sklib__hex_to_dec_string__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__hex_to_dec_string__string_ref.restype = _sklib_string
+sklib.__sklib__hex_to_mac__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__hex_to_mac__string_ref.restype = _sklib_string
 sklib.__sklib__ipv4_to_dec__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__ipv4_to_dec__string_ref.restype = c_uint
 sklib.__sklib__ipv4_to_hex__string_ref.argtypes = [ _sklib_string ]
@@ -2794,6 +2812,8 @@ sklib.__sklib__last_connection__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__last_connection__string_ref.restype = c_void_p
 sklib.__sklib__last_connection__server_socket.argtypes = [ c_void_p ]
 sklib.__sklib__last_connection__server_socket.restype = c_void_p
+sklib.__sklib__mac_to_hex__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__mac_to_hex__string_ref.restype = _sklib_string
 sklib.__sklib__message_connection__message.argtypes = [ c_void_p ]
 sklib.__sklib__message_connection__message.restype = c_void_p
 sklib.__sklib__message_count__server_socket.argtypes = [ c_void_p ]
@@ -4072,6 +4092,22 @@ def close_audio (  ):
     sklib.__sklib__close_audio()
 def open_audio (  ):
     sklib.__sklib__open_audio()
+def base64_decode ( input ):
+    __skparam__input = __skadapter__to_sklib_string(input)
+    __skreturn = sklib.__sklib__base64_decode__string_ref(__skparam__input)
+    return __skadapter__to_string(__skreturn)
+def base64_encode ( input ):
+    __skparam__input = __skadapter__to_sklib_string(input)
+    __skreturn = sklib.__sklib__base64_encode__string_ref(__skparam__input)
+    return __skadapter__to_string(__skreturn)
+def bin_to_dec ( bin ):
+    __skparam__bin = __skadapter__to_sklib_string(bin)
+    __skreturn = sklib.__sklib__bin_to_dec__string_ref(__skparam__bin)
+    return __skadapter__to_unsigned_int(__skreturn)
+def bin_to_hex ( bin_str ):
+    __skparam__bin_str = __skadapter__to_sklib_string(bin_str)
+    __skreturn = sklib.__sklib__bin_to_hex__string_ref(__skparam__bin_str)
+    return __skadapter__to_string(__skreturn)
 def contains ( text, subtext ):
     __skparam__text = __skadapter__to_sklib_string(text)
     __skparam__subtext = __skadapter__to_sklib_string(subtext)
@@ -4085,6 +4121,18 @@ def convert_to_integer ( text ):
     __skparam__text = __skadapter__to_sklib_string(text)
     __skreturn = sklib.__sklib__convert_to_integer__string_ref(__skparam__text)
     return __skadapter__to_int(__skreturn)
+def dec_to_bin ( dec ):
+    __skparam__dec = __skadapter__to_sklib_unsigned_int(dec)
+    __skreturn = sklib.__sklib__dec_to_bin__unsigned_int(__skparam__dec)
+    return __skadapter__to_string(__skreturn)
+def dec_to_oct ( decimal_value ):
+    __skparam__decimal_value = __skadapter__to_sklib_unsigned_int(decimal_value)
+    __skreturn = sklib.__sklib__dec_to_oct__unsigned_int(__skparam__decimal_value)
+    return __skadapter__to_string(__skreturn)
+def hex_to_bin ( hex_str ):
+    __skparam__hex_str = __skadapter__to_sklib_string(hex_str)
+    __skreturn = sklib.__sklib__hex_to_bin__string_ref(__skparam__hex_str)
+    return __skadapter__to_string(__skreturn)
 def index_of ( text, subtext ):
     __skparam__text = __skadapter__to_sklib_string(text)
     __skparam__subtext = __skadapter__to_sklib_string(subtext)
@@ -4106,6 +4154,10 @@ def length_of ( text ):
     __skparam__text = __skadapter__to_sklib_string(text)
     __skreturn = sklib.__sklib__length_of__string_ref(__skparam__text)
     return __skadapter__to_int(__skreturn)
+def oct_to_dec ( octal_string ):
+    __skparam__octal_string = __skadapter__to_sklib_string(octal_string)
+    __skreturn = sklib.__sklib__oct_to_dec__string_ref(__skparam__octal_string)
+    return __skadapter__to_unsigned_int(__skreturn)
 def replace_all ( text, substr, newText ):
     __skparam__text = __skadapter__to_sklib_string(text)
     __skparam__substr = __skadapter__to_sklib_string(substr)
@@ -6849,6 +6901,10 @@ def hex_to_dec_string ( a_hex ):
     __skparam__a_hex = __skadapter__to_sklib_string(a_hex)
     __skreturn = sklib.__sklib__hex_to_dec_string__string_ref(__skparam__a_hex)
     return __skadapter__to_string(__skreturn)
+def hex_to_mac ( hex_str ):
+    __skparam__hex_str = __skadapter__to_sklib_string(hex_str)
+    __skreturn = sklib.__sklib__hex_to_mac__string_ref(__skparam__hex_str)
+    return __skadapter__to_string(__skreturn)
 def ipv4_to_dec ( a_ip ):
     __skparam__a_ip = __skadapter__to_sklib_string(a_ip)
     __skreturn = sklib.__sklib__ipv4_to_dec__string_ref(__skparam__a_ip)
@@ -6877,6 +6933,10 @@ def last_connection ( server ):
     __skparam__server = __skadapter__to_sklib_server_socket(server)
     __skreturn = sklib.__sklib__last_connection__server_socket(__skparam__server)
     return __skadapter__to_connection(__skreturn)
+def mac_to_hex ( mac_address ):
+    __skparam__mac_address = __skadapter__to_sklib_string(mac_address)
+    __skreturn = sklib.__sklib__mac_to_hex__string_ref(__skparam__mac_address)
+    return __skadapter__to_string(__skreturn)
 def message_connection ( msg ):
     __skparam__msg = __skadapter__to_sklib_message(msg)
     __skreturn = sklib.__sklib__message_connection__message(__skparam__msg)
