@@ -1,14 +1,17 @@
 I THINK THESE SHOULD BE UTILITIES:
 
+
+CONVERSION SUITE:
 decimal to binary - done
 binary to decimal - done
-
 hex to binary - done
 binary to hex - done
-
 decimal to octal - done
 octal to decimal - done
-
+octal to binary - done
+binary to octal - done
+hex to octal - done
+octal to hex - done
 
 bas64 encoding - done
 base64 decoding - doing
@@ -21,12 +24,7 @@ hex to dec
 TO DO:
 ASCII to binary
 binary to ASCII
-base32 encoding
-base32 decoding
-hex to base64
-base64 to hex
-octal to binary
-binary to octal
+
 URL encoding
 URL decoding
 UTF-8 encoding
@@ -66,5 +64,3 @@ PRs DONE -
 mac address to hex done
 hex to mac address done
 validate IP address
-Validate MAC address
-

@@ -26,7 +26,8 @@ namespace splashkit_lib
     string ltrim(const string &text)
     {
         string s = text;
-        s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int c) { return !std::isspace(c);}));
+        s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int c)
+                                        { return !std::isspace(c); }));
         return s;
     }
 
@@ -34,7 +35,10 @@ namespace splashkit_lib
     string rtrim(const string &text)
     {
         string s = text;
-        s.erase(std::find_if(s.rbegin(), s.rend(), [](int c) { return !std::isspace(c);}).base(), s.end());
+        s.erase(std::find_if(s.rbegin(), s.rend(), [](int c)
+                             { return !std::isspace(c); })
+                    .base(),
+                s.end());
         return s;
     }
 
@@ -80,7 +84,7 @@ namespace splashkit_lib
     {
         if (substr.empty())
             return text;
-        
+
         string result = text;
         size_t pos = 0;
         while ((pos = result.find(substr, pos)) != string::npos)
@@ -111,11 +115,12 @@ namespace splashkit_lib
     bool is_integer(const string &text)
     {
         string s = trim(text);
-        if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
-        
-        char * p;
+        if (s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+')))
+            return false;
+
+        char *p;
         strtol(s.c_str(), &p, 10);
-        
+
         return (*p == 0);
     }
 
@@ -127,24 +132,24 @@ namespace splashkit_lib
     bool is_number(const string &text)
     {
         string s = trim(text);
-        if(s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
-        
-        char * p;
+        if (s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+')))
+            return false;
+
+        char *p;
         strtod(s.c_str(), &p);
-        
+
         return (*p == 0);
     }
 
     int convert_to_integer(const string &text)
     {
-        return std::stoi( text );
+        return std::stoi(text);
     }
 
     double convert_to_double(const string &text)
     {
-        return std::stod( text );
+        return std::stod(text);
     }
-
 
     // Convert decimal to binary string
     string dec_to_bin(unsigned int a_dec)
@@ -317,4 +322,72 @@ namespace splashkit_lib
         }
         return decimal_value;
     }
+
+    // Convert octal string to binary string
+    string oct_to_bin(const string &octal_str)
+    {
+        string bin_string;
+        for (char oct_char : octal_str)
+        {
+            int oct_val = oct_char - '0';
+
+            // Convert each octal digit to a 3-bit binary representation
+            for (int i = 2; i >= 0; i--)
+            {
+                bin_string += ((oct_val >> i) & 1) ? '1' : '0';
+            }
+        }
+
+        // Remove leading zeros if present
+        size_t first_one = bin_string.find_first_not_of('0');
+        return (first_one == string::npos) ? "0" : bin_string.substr(first_one);
+    }
+
+    // Convert binary string to octal string
+    string bin_to_oct(const string &bin_str)
+    {
+        string octal_string;
+
+        // Pad binary string with leading zeros to make its length a multiple of 3
+        int padding = (3 - (bin_str.length() % 3)) % 3;
+        string padded_bin_str = string(padding, '0') + bin_str;
+
+        for (size_t i = 0; i < padded_bin_str.length(); i += 3)
+        {
+            int oct_val = 0;
+            for (size_t j = 0; j < 3; j++)
+            {
+                oct_val <<= 1;
+                if (padded_bin_str[i + j] == '1')
+                    oct_val |= 1;
+            }
+
+            octal_string += '0' + oct_val;
+        }
+
+        // Remove leading zeros if present
+        size_t first_non_zero = octal_string.find_first_not_of('0');
+        return (first_non_zero == string::npos) ? "0" : octal_string.substr(first_non_zero);
+    }
+
+    // Convert hexadecimal string to octal string
+    string hex_to_oct(const string &hex_str)
+    {
+        // First, convert hex to binary
+        string bin_str = hex_to_bin(hex_str);
+
+        // Then, convert binary to octal
+        return bin_to_oct(bin_str);
+    }
+
+    // Convert octal string to hexadecimal string
+    string oct_to_hex(const string &octal_str)
+    {
+        // First, convert octal to binary
+        string bin_str = oct_to_bin(octal_str);
+
+        // Then, convert binary to hex
+        return bin_to_hex(bin_str);
+    }
+
 }

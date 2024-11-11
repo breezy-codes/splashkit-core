@@ -230,6 +230,54 @@ namespace splashkit_lib
      * @returns Decimal (unsigned integer) representation of the octal string
      */
     unsigned int oct_to_dec(const string &octal_string);
+
+    /**
+     * @brief Converts an octal string to a binary string
+     *
+     * Converts the provided octal string into its binary string representation.
+     * For example, "12" will be converted to "1010".
+     *
+     * @param octal_str Octal string to convert
+     *
+     * @returns Binary string representation of the octal string
+     */
+    string oct_to_bin(const string &octal_str);
+
+    /**
+     * @brief Converts a binary string to an octal string
+     *
+     * Converts the provided binary string into its octal string representation.
+     * For example, "1010" will be converted to "12".
+     *
+     * @param bin_str Binary string to convert
+     *
+     * @returns Octal string representation of the binary string
+     */
+    string bin_to_oct(const string &bin_str);
+
+    /**
+     * @brief Converts a hexadecimal string to an octal string
+     *
+     * Converts the provided hexadecimal string into its octal string representation.
+     * For example, "A" will be converted to "12".
+     *
+     * @param hex_str Hexadecimal string to convert
+     *
+     * @returns Octal string representation of the hexadecimal string
+     */
+    string hex_to_oct(const string &hex_str);
+
+    /**
+     * @brief Converts an octal string to a hexadecimal string
+     *
+     * Converts the provided octal string into its hexadecimal string representation.
+     * For example, "12" will be converted to "A".
+     *
+     * @param oct_str Octal string to convert
+     *
+     * @returns Hexadecimal string representation of the octal string
+     */
+    string oct_to_hex(const string &oct_str);
 }
 
 #endif /* basics_hpp */

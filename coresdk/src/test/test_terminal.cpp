@@ -313,6 +313,146 @@ void test_oct_to_dec()
     write_line("-------------------------------------");
 }
 
+void test_octal_to_bin() {
+    write_line("Testing octal to binary conversion");
+    assert(oct_to_bin("0") == "0");    // Zero case
+    assert(oct_to_bin("1") == "1");    // Single digit
+    assert(oct_to_bin("7") == "111");  // Max single octal digit
+    assert(oct_to_bin("10") == "1000"); // Power of 8
+
+    // Multi-digit octal numbers
+    assert(oct_to_bin("12") == "1010");   // Simple two-digit octal
+    assert(oct_to_bin("77") == "111111"); // Two max digits
+    assert(oct_to_bin("100") == "1000000"); // Three digits
+    assert(oct_to_bin("173") == "1111011"); // Arbitrary octal number
+    
+    // Larger octal values
+    assert(oct_to_bin("777") == "111111111");     // Max 9-bit value
+    assert(oct_to_bin("1000") == "1000000000");   // Power of 8
+    assert(oct_to_bin("7777") == "111111111111"); // Max 12-bit value
+    
+    // Edge cases and boundary values
+    assert(oct_to_bin("37777777777") == "11111111111111111111111111111111"); // Max 32-bit 
+    assert(oct_to_bin("20000000000") == "10000000000000000000000000000000"); // 2^31
+
+    string oct_input1 = "173";
+    string result1 = oct_to_bin(oct_input1);
+    write_line("173 in binary is " + result1);
+
+    string oct_input2 = "7777";
+    string result2 = oct_to_bin(oct_input2);
+    write_line("7777 in binary is " + result2);
+
+    write_line("All octal to binary tests passed!");
+    write_line("-------------------------------------");
+}
+
+void test_bin_to_oct() {
+    write_line("Testing binary to octal conversion");
+    assert(bin_to_oct("0") == "0");    // Zero case
+    assert(bin_to_oct("1") == "1");    // Single bit
+    assert(bin_to_oct("111") == "7");  // Three bits to single octal
+    assert(bin_to_oct("1000") == "10"); // Power of 2 to octal
+
+    // Multi-bit binary numbers
+    assert(bin_to_oct("1010") == "12");     // Simple 4-bit binary
+    assert(bin_to_oct("111111") == "77");   // Six bits to two octals
+    assert(bin_to_oct("1000000") == "100"); // Seven bits to three octals
+    assert(bin_to_oct("1111011") == "173"); // Arbitrary binary number
+
+    // Larger binary values
+    assert(bin_to_oct("111111111") == "777");       // Nine bits
+    assert(bin_to_oct("1000000000") == "1000");     // Ten bits
+    assert(bin_to_oct("111111111111") == "7777");   // Twelve bits
+
+    // Edge cases and boundary values
+    assert(bin_to_oct("11111111111111111111111111111111") == "37777777777"); // Max 32-bit
+    assert(bin_to_oct("10000000000000000000000000000000") == "20000000000"); // 2^31
+
+    string bin_input1 = "1111011";
+    string result1 = bin_to_oct(bin_input1);
+    write_line("1111011 in octal is " + result1);
+
+    string bin_input2 = "111111111111";
+    string result2 = bin_to_oct(bin_input2);
+    write_line("111111111111 in octal is " + result2);
+
+    write_line("All binary to octal tests passed!");
+    write_line("-------------------------------------");
+}
+
+void test_oct_to_hex()
+{
+    write_line("Testing octal to hexadecimal conversion");
+    assert(oct_to_hex("0") == "0");    // Zero case
+    assert(oct_to_hex("1") == "1");    // Single digit
+    assert(oct_to_hex("7") == "7");    // Max single octal digit
+    assert(oct_to_hex("10") == "8");   // Power of 8
+
+    // Multi-digit octal numbers
+    assert(oct_to_hex("12") == "A");     // Simple two-digit octal
+    assert(oct_to_hex("77") == "3F");    // Two max digits
+    assert(oct_to_hex("100") == "40");   // Three digits
+    assert(oct_to_hex("173") == "7B");   // Arbitrary octal number
+
+    // Larger octal values
+    assert(oct_to_hex("777") == "1FF");       // Max 9-bit value
+    assert(oct_to_hex("1000") == "200");      // Power of 8 
+    assert(oct_to_hex("7777") == "FFF");      // Max 12-bit value
+    assert(oct_to_hex("77777") == "FFFF");    // Max 16-bit value
+
+    // Edge cases and boundary values  
+    assert(oct_to_hex("37777777777") == "FFFFFFFF"); // Max 32-bit
+    assert(oct_to_hex("20000000000") == "80000000"); // 2^31
+
+    string oct_input1 = "173";
+    string result1 = oct_to_hex(oct_input1);
+    write_line("173 in hexadecimal is " + result1);
+
+    string oct_input2 = "7777"; 
+    string result2 = oct_to_hex(oct_input2);
+    write_line("7777 in hexadecimal is " + result2);
+
+    write_line("All octal to hexadecimal tests passed!");
+    write_line("-------------------------------------");
+}
+
+void test_hex_to_oct() 
+{
+    write_line("Testing hexadecimal to octal conversion");
+    assert(hex_to_oct("0") == "0");    // Zero case
+    assert(hex_to_oct("1") == "1");    // Single digit  
+    assert(hex_to_oct("7") == "7");    // Single hex digit
+    assert(hex_to_oct("8") == "10");   // Octal two digits
+
+    // Multi-digit hex numbers
+    assert(hex_to_oct("A") == "12");     // Single letter hex
+    assert(hex_to_oct("3F") == "77");    // Two hex digits
+    assert(hex_to_oct("40") == "100");   // Power of 16
+    assert(hex_to_oct("7B") == "173");   // Arbitrary hex number
+
+    // Larger hex values
+    assert(hex_to_oct("1FF") == "777");       // Three hex digits
+    assert(hex_to_oct("200") == "1000");      // Power of 16
+    assert(hex_to_oct("FFF") == "7777");      // Three F's
+    assert(hex_to_oct("FFFF") == "177777");   // Four F's 
+
+    // Edge cases and boundary values
+    assert(hex_to_oct("FFFFFFFF") == "37777777777"); // Max 32-bit
+    assert(hex_to_oct("80000000") == "20000000000"); // 2^31
+
+    string hex_input1 = "7B";
+    string result1 = hex_to_oct(hex_input1);
+    write_line("7B in octal is " + result1);
+
+    string hex_input2 = "FFF";
+    string result2 = hex_to_oct(hex_input2); 
+    write_line("FFF in octal is " + result2);
+
+    write_line("All hexadecimal to octal tests passed!");
+    write_line("-------------------------------------");
+}
+
 void run_terminal_test()
 {
     test_simple_terminal();
@@ -324,4 +464,8 @@ void run_terminal_test()
     test_base64_decode();
     test_dec_to_oct();
     test_oct_to_dec();
+    test_octal_to_bin();
+    test_bin_to_oct();
+    test_oct_to_hex();
+    test_hex_to_oct();
 }

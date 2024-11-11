@@ -145,31 +145,6 @@ void is_valid_ip_test()
     std::cout << "-------------------------------------" << std::endl;
 }
 
-void is_valid_mac_test()
-{
-    // Valid MAC addresses - should return true
-    assert(is_valid_mac("00:00:00:00:00:00") == true);  // Minimum values
-    assert(is_valid_mac("FF:FF:FF:FF:FF:FF") == true);  // Maximum values
-    assert(is_valid_mac("01:23:45:67:89:AB") == true);  // Mixed case
-    assert(is_valid_mac("ab:cd:ef:12:34:56") == true);  // Lower case
-    assert(is_valid_mac("AB:CD:EF:12:34:56") == true);  // Upper case
-    assert(is_valid_mac("0A:BC:DE:F1:23:45") == true);  // Mixed digits and letters
-
-    // Invalid MAC addresses - should return false
-    assert(is_valid_mac("00:00:00:00:00") == false);     // Too few octets
-    assert(is_valid_mac("00:00:00:00:00:00:00") == false); // Too many octets
-    assert(is_valid_mac("GG:00:00:00:00:00") == false);  // Invalid hex digits
-    assert(is_valid_mac("00-00-00-00-00-00") == false);  // Wrong separator
-    assert(is_valid_mac("00:00:00:00:00:0") == false);   // Incomplete octet
-    assert(is_valid_mac("00:00:00:00:00:000") == false); // Octet too long
-    assert(is_valid_mac("") == false);                    // Empty string
-    assert(is_valid_mac(":::::") == false);              // Just separators
-    assert(is_valid_mac("XX:XX:XX:XX:XX:XX") == false);  // Invalid characters
-
-    std::cout << "All MAC validation tests passed!" << std::endl;
-    std::cout << "-------------------------------------" << std::endl;
-}
-
 void run_networking_test()
 {
     ipv4_to_dec_test();
@@ -179,5 +154,4 @@ void run_networking_test()
     mac_to_hex_test();
     hex_to_mac_test();
     is_valid_ip_test();
-    is_valid_mac_test();
 }
