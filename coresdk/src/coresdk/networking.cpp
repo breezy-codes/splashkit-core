@@ -16,7 +16,6 @@ using std::setw;
 using std::stringstream;
 using std::to_string;
 using std::uppercase;
-using std::regex;
 
 namespace splashkit_lib
 {
@@ -1329,17 +1328,16 @@ namespace splashkit_lib
 
     bool is_valid_ipv4(const string &ip)
     {
-        const regex ip_pattern("^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
+        const std::regex ip_pattern("^(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
                                     "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
                                     "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\."
                                     "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$");
-        return regex_match(ip, ip_pattern);
+        return std::regex_match(ip, ip_pattern);
     }
 
-    bool is_valid_mac(const std::string &mac)
+    bool is_valid_mac(const string &mac)
     {
-        const regex mac_pattern("^([0-9A-Fa-f]{2}[-:]){5}([0-9A-Fa-f]{2})$");
-        return regex_match(mac, mac_pattern);
+        const std::regex mac_pattern("^(?:[0-9A-Fa-f]{2}([-:]))(?:[0-9A-Fa-f]{2}\\1){4}[0-9A-Fa-f]{2}$");
+        return std::regex_match(mac, mac_pattern);
     }
-
 }

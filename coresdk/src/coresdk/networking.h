@@ -930,6 +930,6 @@ namespace splashkit_lib
      * @param mac The string containing the MAC address to validate
      * @return bool Returns true if the string is a valid MAC address, false otherwise
      */
-    bool is_valid_mac(const std::string &mac);
+    bool is_valid_mac(const string &mac);
 }
 #endif // SPLASHKIT_NETWORKING_H
