@@ -55697,6 +55697,58 @@
         }
       },
       {
+        "signature": "string hex_to_mac(const string &hex_str);",
+        "name": "hex_to_mac",
+        "method_name": null,
+        "unique_global_name": "hex_to_mac",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts a hexadecimal representation of a MAC address back to its standard format.\ne.g. 01:23:45:67:89:AB from 0x0123456789AB",
+        "brief": "Converts a hexadecimal string to a MAC address",
+        "return": {
+          "type": "string",
+          "description": "MAC address as a string in the format XX:XX:XX:XX:XX:XX",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "hex_str": {
+            "type": "string",
+            "description": "hexadecimal string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "networking",
+          "static": "networking"
+        },
+        "signatures": {
+          "cpp": [
+            "string hex_to_mac(const string &hex_str)"
+          ],
+          "python": [
+            "def hex_to_mac(hex_str):"
+          ],
+          "pascal": [
+            "function HexToMac(const hexStr: String): String"
+          ],
+          "csharp": [
+            "public static string Networking.HexToMac(string hexStr);",
+            "public static string SplashKit.HexToMac(string hexStr);"
+          ]
+        }
+      },
+      {
         "signature": "unsigned int ipv4_to_dec(const string &a_ip);",
         "name": "ipv4_to_dec",
         "method_name": null,
@@ -55749,7 +55801,7 @@
         }
       },
       {
-        "signature": "string ipv4_to_hex(const string& a_ip);",
+        "signature": "string ipv4_to_hex(const string &a_ip);",
         "name": "ipv4_to_hex",
         "method_name": null,
         "unique_global_name": "ipv4_to_hex",
@@ -56065,6 +56117,58 @@
           "csharp": [
             "public Connection ServerSocket.LastConnection { get }",
             "public static Connection SplashKit.LastConnection(ServerSocket server);"
+          ]
+        }
+      },
+      {
+        "signature": "string mac_to_hex(const string &mac_address);",
+        "name": "mac_to_hex",
+        "method_name": null,
+        "unique_global_name": "mac_to_hex",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts a MAC address into its hexadecimal representation.\ne.g. 0x0123456789AB from 01:23:45:67:89:AB",
+        "brief": "Converts a MAC address string to its hexadecimal representation",
+        "return": {
+          "type": "string",
+          "description": "hexadecimal representation of MAC address as a string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "mac_address": {
+            "type": "string",
+            "description": "MAC address to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "networking",
+          "static": "networking"
+        },
+        "signatures": {
+          "cpp": [
+            "string mac_to_hex(const string &mac_address)"
+          ],
+          "python": [
+            "def mac_to_hex(mac_address):"
+          ],
+          "pascal": [
+            "function MacToHex(const macAddress: String): String"
+          ],
+          "csharp": [
+            "public static string Networking.MacToHex(string macAddress);",
+            "public static string SplashKit.MacToHex(string macAddress);"
           ]
         }
       },
@@ -86553,6 +86657,214 @@
     "description": "The SplashKit`s random library provides two rnd methods, a `rnd()` which generates\na random number between 0 and 1, and `rnd(int ubound)` which\ngenerates a random number between 0 and the value scpeficied in `ubound`.",
     "functions": [
       {
+        "signature": "string base64_decode(const string &input);",
+        "name": "base64_decode",
+        "method_name": null,
+        "unique_global_name": "base64_decode",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided Base64 encoded string back to its original form.\nFor example, \"TWFu\" will be converted to \"Man\".",
+        "brief": "Decodes a Base64 encoded string",
+        "return": {
+          "type": "string",
+          "description": "Decoded original string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "input": {
+            "type": "string",
+            "description": "Base64 encoded string to decode",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "string base64_decode(const string &input)"
+          ],
+          "python": [
+            "def base64_decode(input):"
+          ],
+          "pascal": [
+            "function Base64Decode(const input: String): String"
+          ],
+          "csharp": [
+            "public static string Utilities.Base64Decode(string input);",
+            "public static string SplashKit.Base64Decode(string input);"
+          ]
+        }
+      },
+      {
+        "signature": "string base64_encode(const string &input);",
+        "name": "base64_encode",
+        "method_name": null,
+        "unique_global_name": "base64_encode",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided string into its Base64 encoded representation.\nFor example, \"Man\" will be converted to \"TWFu\".",
+        "brief": "Encodes a string to Base64 format",
+        "return": {
+          "type": "string",
+          "description": "Base64 encoded string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "input": {
+            "type": "string",
+            "description": "String to encode",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "string base64_encode(const string &input)"
+          ],
+          "python": [
+            "def base64_encode(input):"
+          ],
+          "pascal": [
+            "function Base64Encode(const input: String): String"
+          ],
+          "csharp": [
+            "public static string Utilities.Base64Encode(string input);",
+            "public static string SplashKit.Base64Encode(string input);"
+          ]
+        }
+      },
+      {
+        "signature": "unsigned int bin_to_dec(const string &bin);",
+        "name": "bin_to_dec",
+        "method_name": null,
+        "unique_global_name": "bin_to_dec",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided binary string into an unsigned integer.\nFor example, \"1010\" will be converted to 10.",
+        "brief": "Converts a binary string to a decimal (unsigned integer)",
+        "return": {
+          "type": "unsigned int",
+          "description": "Decimal (unsigned integer) representation of the binary string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "bin": {
+            "type": "string",
+            "description": "Binary string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "unsigned int bin_to_dec(const string &bin)"
+          ],
+          "python": [
+            "def bin_to_dec(bin):"
+          ],
+          "pascal": [
+            "function BinToDec(const bin: String): Cardinal"
+          ],
+          "csharp": [
+            "public static uint Utilities.BinToDec(string bin);",
+            "public static uint SplashKit.BinToDec(string bin);"
+          ]
+        }
+      },
+      {
+        "signature": "string bin_to_hex(const string &bin_str);",
+        "name": "bin_to_hex",
+        "method_name": null,
+        "unique_global_name": "bin_to_hex",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided binary string into a hexadecimal string representation.\nFor example, \"1010\" will be converted to \"A\".",
+        "brief": "Converts a binary string to a hexadecimal string",
+        "return": {
+          "type": "string",
+          "description": "Hexadecimal string representation of the binary string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "bin_str": {
+            "type": "string",
+            "description": "Binary string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "string bin_to_hex(const string &bin_str)"
+          ],
+          "python": [
+            "def bin_to_hex(bin_str):"
+          ],
+          "pascal": [
+            "function BinToHex(const binStr: String): String"
+          ],
+          "csharp": [
+            "public static string Utilities.BinToHex(string binStr);",
+            "public static string SplashKit.BinToHex(string binStr);"
+          ]
+        }
+      },
+      {
         "signature": "bool contains(const string &text,const string &subtext);",
         "name": "contains",
         "method_name": null,
@@ -86718,6 +87030,162 @@
           "csharp": [
             "public static int Utilities.ConvertToInteger(string text);",
             "public static int SplashKit.ConvertToInteger(string text);"
+          ]
+        }
+      },
+      {
+        "signature": "string dec_to_bin(unsigned int dec);",
+        "name": "dec_to_bin",
+        "method_name": null,
+        "unique_global_name": "dec_to_bin",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided unsigned integer into a binary string.\nFor example, 10 will be converted to \"1010\".",
+        "brief": "Converts a decimal (unsigned integer) to a binary string",
+        "return": {
+          "type": "string",
+          "description": "Binary string representation of the decimal",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "dec": {
+            "type": "unsigned int",
+            "description": "Decimal (unsigned integer) to convert",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "string dec_to_bin(unsigned int dec)"
+          ],
+          "python": [
+            "def dec_to_bin(dec):"
+          ],
+          "pascal": [
+            "function DecToBin(dec: Cardinal): String"
+          ],
+          "csharp": [
+            "public static string Utilities.DecToBin(uint dec);",
+            "public static string SplashKit.DecToBin(uint dec);"
+          ]
+        }
+      },
+      {
+        "signature": "string dec_to_oct(unsigned int decimal_value);",
+        "name": "dec_to_oct",
+        "method_name": null,
+        "unique_global_name": "dec_to_oct",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided decimal value into its octal string representation.\nFor example, 64 will be converted to \"100\".",
+        "brief": "Converts a decimal (unsigned integer) to an octal string",
+        "return": {
+          "type": "string",
+          "description": "Octal string representation of the decimal value",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "decimal_value": {
+            "type": "unsigned int",
+            "description": "Decimal (unsigned integer) to convert",
+            "is_pointer": false,
+            "is_const": false,
+            "is_reference": false,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "string dec_to_oct(unsigned int decimal_value)"
+          ],
+          "python": [
+            "def dec_to_oct(decimal_value):"
+          ],
+          "pascal": [
+            "function DecToOct(decimalValue: Cardinal): String"
+          ],
+          "csharp": [
+            "public static string Utilities.DecToOct(uint decimalValue);",
+            "public static string SplashKit.DecToOct(uint decimalValue);"
+          ]
+        }
+      },
+      {
+        "signature": "string hex_to_bin(const string &hex_str);",
+        "name": "hex_to_bin",
+        "method_name": null,
+        "unique_global_name": "hex_to_bin",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided hexadecimal string into its binary string representation.\nFor example, \"A\" will be converted to \"1010\".",
+        "brief": "Converts a hexadecimal string to a binary string",
+        "return": {
+          "type": "string",
+          "description": "Binary string representation of the hexadecimal string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "hex_str": {
+            "type": "string",
+            "description": "Hexadecimal string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "string hex_to_bin(const string &hex_str)"
+          ],
+          "python": [
+            "def hex_to_bin(hex_str):"
+          ],
+          "pascal": [
+            "function HexToBin(const hexStr: String): String"
+          ],
+          "csharp": [
+            "public static string Utilities.HexToBin(string hexStr);",
+            "public static string SplashKit.HexToBin(string hexStr);"
           ]
         }
       },
@@ -86991,6 +87459,58 @@
           "csharp": [
             "public static int Utilities.LengthOf(string text);",
             "public static int SplashKit.LengthOf(string text);"
+          ]
+        }
+      },
+      {
+        "signature": "unsigned int oct_to_dec(const string &octal_string);",
+        "name": "oct_to_dec",
+        "method_name": null,
+        "unique_global_name": "oct_to_dec",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided octal string into its decimal representation.\nFor example, \"100\" will be converted to 64.",
+        "brief": "Converts an octal string to a decimal (unsigned integer)",
+        "return": {
+          "type": "unsigned int",
+          "description": "Decimal (unsigned integer) representation of the octal string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "octal_string": {
+            "type": "string",
+            "description": "Octal string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        },
+        "signatures": {
+          "cpp": [
+            "unsigned int oct_to_dec(const string &octal_string)"
+          ],
+          "python": [
+            "def oct_to_dec(octal_string):"
+          ],
+          "pascal": [
+            "function OctToDec(const octalString: String): Cardinal"
+          ],
+          "csharp": [
+            "public static uint Utilities.OctToDec(string octalString);",
+            "public static uint SplashKit.OctToDec(string octalString);"
           ]
         }
       },

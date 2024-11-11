@@ -430,14 +430,22 @@ procedure UpdateAnimation(anim: Animation; pct: Single);
 function AudioReady(): Boolean;
 procedure CloseAudio();
 procedure OpenAudio();
+function Base64Decode(const input: String): String;
+function Base64Encode(const input: String): String;
+function BinToDec(const bin: String): Cardinal;
+function BinToHex(const binStr: String): String;
 function Contains(const text: String; const subtext: String): Boolean;
 function ConvertToDouble(const text: String): Double;
 function ConvertToInteger(const text: String): Integer;
+function DecToBin(dec: Cardinal): String;
+function DecToOct(decimalValue: Cardinal): String;
+function HexToBin(const hexStr: String): String;
 function IndexOf(const text: String; const subtext: String): Integer;
 function IsDouble(const text: String): Boolean;
 function IsInteger(const text: String): Boolean;
 function IsNumber(const text: String): Boolean;
 function LengthOf(const text: String): Integer;
+function OctToDec(const octalString: String): Cardinal;
 function ReplaceAll(const text: String; const substr: String; const newtext: String): String;
 function Split(const text: String; delimiter: Char): ArrayOfString;
 function ToLowercase(const text: String): String;
@@ -1084,6 +1092,7 @@ function HasNewConnections(): Boolean;
 function HasServer(const name: String): Boolean;
 function HexStrToIpv4(const aHex: String): String;
 function HexToDecString(const aHex: String): String;
+function HexToMac(const hexStr: String): String;
 function Ipv4ToDec(const aIP: String): Cardinal;
 function Ipv4ToHex(const aIP: String): String;
 function Ipv4ToStr(ip: Cardinal): String;
@@ -1091,6 +1100,7 @@ function IsConnectionOpen(con: Connection): Boolean;
 function IsConnectionOpen(const name: String): Boolean;
 function LastConnection(const name: String): Connection;
 function LastConnection(server: ServerSocket): Connection;
+function MacToHex(const macAddress: String): String;
 function MessageConnection(msg: Message): Connection;
 function MessageCount(svr: ServerSocket): Cardinal;
 function MessageCount(aConnection: Connection): Cardinal;
@@ -2645,14 +2655,22 @@ procedure __sklib__update_animation__animation__float(anim: __sklib_ptr; pct: Si
 function __sklib__audio_ready(): LongInt; cdecl; external;
 procedure __sklib__close_audio(); cdecl; external;
 procedure __sklib__open_audio(); cdecl; external;
+function __sklib__base64_decode__string_ref(const input: __sklib_string): __sklib_string; cdecl; external;
+function __sklib__base64_encode__string_ref(const input: __sklib_string): __sklib_string; cdecl; external;
+function __sklib__bin_to_dec__string_ref(const bin: __sklib_string): Cardinal; cdecl; external;
+function __sklib__bin_to_hex__string_ref(const binStr: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__contains__string_ref__string_ref(const text: __sklib_string; const subtext: __sklib_string): LongInt; cdecl; external;
 function __sklib__convert_to_double__string_ref(const text: __sklib_string): Double; cdecl; external;
 function __sklib__convert_to_integer__string_ref(const text: __sklib_string): Integer; cdecl; external;
+function __sklib__dec_to_bin__unsigned_int(dec: Cardinal): __sklib_string; cdecl; external;
+function __sklib__dec_to_oct__unsigned_int(decimalValue: Cardinal): __sklib_string; cdecl; external;
+function __sklib__hex_to_bin__string_ref(const hexStr: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__index_of__string_ref__string_ref(const text: __sklib_string; const subtext: __sklib_string): Integer; cdecl; external;
 function __sklib__is_double__string_ref(const text: __sklib_string): LongInt; cdecl; external;
 function __sklib__is_integer__string_ref(const text: __sklib_string): LongInt; cdecl; external;
 function __sklib__is_number__string_ref(const text: __sklib_string): LongInt; cdecl; external;
 function __sklib__length_of__string_ref(const text: __sklib_string): Integer; cdecl; external;
+function __sklib__oct_to_dec__string_ref(const octalString: __sklib_string): Cardinal; cdecl; external;
 function __sklib__replace_all__string_ref__string_ref__string_ref(const text: __sklib_string; const substr: __sklib_string; const newtext: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__split__string_ref__char(const text: __sklib_string; delimiter: Char): __sklib_vector_string; cdecl; external;
 function __sklib__to_lowercase__string_ref(const text: __sklib_string): __sklib_string; cdecl; external;
@@ -3299,6 +3317,7 @@ function __sklib__has_new_connections(): LongInt; cdecl; external;
 function __sklib__has_server__string_ref(const name: __sklib_string): LongInt; cdecl; external;
 function __sklib__hex_str_to_ipv4__string_ref(const aHex: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__hex_to_dec_string__string_ref(const aHex: __sklib_string): __sklib_string; cdecl; external;
+function __sklib__hex_to_mac__string_ref(const hexStr: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__ipv4_to_dec__string_ref(const aIP: __sklib_string): Cardinal; cdecl; external;
 function __sklib__ipv4_to_hex__string_ref(const aIP: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__ipv4_to_str__unsigned_int(ip: Cardinal): __sklib_string; cdecl; external;
@@ -3306,6 +3325,7 @@ function __sklib__is_connection_open__connection(con: __sklib_ptr): LongInt; cde
 function __sklib__is_connection_open__string_ref(const name: __sklib_string): LongInt; cdecl; external;
 function __sklib__last_connection__string_ref(const name: __sklib_string): __sklib_ptr; cdecl; external;
 function __sklib__last_connection__server_socket(server: __sklib_ptr): __sklib_ptr; cdecl; external;
+function __sklib__mac_to_hex__string_ref(const macAddress: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__message_connection__message(msg: __sklib_ptr): __sklib_ptr; cdecl; external;
 function __sklib__message_count__server_socket(svr: __sklib_ptr): Cardinal; cdecl; external;
 function __sklib__message_count__connection(aConnection: __sklib_ptr): Cardinal; cdecl; external;
@@ -4238,6 +4258,42 @@ procedure OpenAudio();
 begin
   __sklib__open_audio();
 end;
+function Base64Decode(const input: String): String;
+var
+  __skparam__input: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__input := __skadapter__to_sklib_string(input);
+  __skreturn := __sklib__base64_decode__string_ref(__skparam__input);
+  result := __skadapter__to_string(__skreturn);
+end;
+function Base64Encode(const input: String): String;
+var
+  __skparam__input: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__input := __skadapter__to_sklib_string(input);
+  __skreturn := __sklib__base64_encode__string_ref(__skparam__input);
+  result := __skadapter__to_string(__skreturn);
+end;
+function BinToDec(const bin: String): Cardinal;
+var
+  __skparam__bin: __sklib_string;
+  __skreturn: Cardinal;
+begin
+  __skparam__bin := __skadapter__to_sklib_string(bin);
+  __skreturn := __sklib__bin_to_dec__string_ref(__skparam__bin);
+  result := __skadapter__to_unsigned_int(__skreturn);
+end;
+function BinToHex(const binStr: String): String;
+var
+  __skparam__bin_str: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__bin_str := __skadapter__to_sklib_string(binStr);
+  __skreturn := __sklib__bin_to_hex__string_ref(__skparam__bin_str);
+  result := __skadapter__to_string(__skreturn);
+end;
 function Contains(const text: String; const subtext: String): Boolean;
 var
   __skparam__text: __sklib_string;
@@ -4266,6 +4322,33 @@ begin
   __skparam__text := __skadapter__to_sklib_string(text);
   __skreturn := __sklib__convert_to_integer__string_ref(__skparam__text);
   result := __skadapter__to_int(__skreturn);
+end;
+function DecToBin(dec: Cardinal): String;
+var
+  __skparam__dec: Cardinal;
+  __skreturn: __sklib_string;
+begin
+  __skparam__dec := __skadapter__to_sklib_unsigned_int(dec);
+  __skreturn := __sklib__dec_to_bin__unsigned_int(__skparam__dec);
+  result := __skadapter__to_string(__skreturn);
+end;
+function DecToOct(decimalValue: Cardinal): String;
+var
+  __skparam__decimal_value: Cardinal;
+  __skreturn: __sklib_string;
+begin
+  __skparam__decimal_value := __skadapter__to_sklib_unsigned_int(decimalValue);
+  __skreturn := __sklib__dec_to_oct__unsigned_int(__skparam__decimal_value);
+  result := __skadapter__to_string(__skreturn);
+end;
+function HexToBin(const hexStr: String): String;
+var
+  __skparam__hex_str: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__hex_str := __skadapter__to_sklib_string(hexStr);
+  __skreturn := __sklib__hex_to_bin__string_ref(__skparam__hex_str);
+  result := __skadapter__to_string(__skreturn);
 end;
 function IndexOf(const text: String; const subtext: String): Integer;
 var
@@ -4313,6 +4396,15 @@ begin
   __skparam__text := __skadapter__to_sklib_string(text);
   __skreturn := __sklib__length_of__string_ref(__skparam__text);
   result := __skadapter__to_int(__skreturn);
+end;
+function OctToDec(const octalString: String): Cardinal;
+var
+  __skparam__octal_string: __sklib_string;
+  __skreturn: Cardinal;
+begin
+  __skparam__octal_string := __skadapter__to_sklib_string(octalString);
+  __skreturn := __sklib__oct_to_dec__string_ref(__skparam__octal_string);
+  result := __skadapter__to_unsigned_int(__skreturn);
 end;
 function ReplaceAll(const text: String; const substr: String; const newtext: String): String;
 var
@@ -10406,6 +10498,15 @@ begin
   __skreturn := __sklib__hex_to_dec_string__string_ref(__skparam__a_hex);
   result := __skadapter__to_string(__skreturn);
 end;
+function HexToMac(const hexStr: String): String;
+var
+  __skparam__hex_str: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__hex_str := __skadapter__to_sklib_string(hexStr);
+  __skreturn := __sklib__hex_to_mac__string_ref(__skparam__hex_str);
+  result := __skadapter__to_string(__skreturn);
+end;
 function Ipv4ToDec(const aIP: String): Cardinal;
 var
   __skparam__a_ip: __sklib_string;
@@ -10468,6 +10569,15 @@ begin
   __skparam__server := __skadapter__to_sklib_server_socket(server);
   __skreturn := __sklib__last_connection__server_socket(__skparam__server);
   result := __skadapter__to_connection(__skreturn);
+end;
+function MacToHex(const macAddress: String): String;
+var
+  __skparam__mac_address: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__mac_address := __skadapter__to_sklib_string(macAddress);
+  __skreturn := __sklib__mac_to_hex__string_ref(__skparam__mac_address);
+  result := __skadapter__to_string(__skreturn);
 end;
 function MessageConnection(msg: Message): Connection;
 var

@@ -6,11 +6,12 @@ binary to decimal - done
 hex to binary - done
 binary to hex - done
 
-bas64 encoding - done
-base64 decoding - doing
-
 decimal to octal - done
 octal to decimal - done
+
+
+bas64 encoding - done
+base64 decoding - doing
 
 Should move these from networking to utilities:
 dec to hex

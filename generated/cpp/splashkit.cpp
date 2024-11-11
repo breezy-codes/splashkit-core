@@ -239,6 +239,30 @@ void close_audio() {
 void open_audio() {
     __sklib__open_audio();
 }
+string base64_decode(const string &input) {
+    const __sklib_string __skparam__input = __skadapter__to_sklib_string(input);
+    __sklib_string __skreturn = __sklib__base64_decode__string_ref(__skparam__input);
+    __skadapter__free__sklib_string(__skparam__input);
+    return __skadapter__to_string(__skreturn);
+}
+string base64_encode(const string &input) {
+    const __sklib_string __skparam__input = __skadapter__to_sklib_string(input);
+    __sklib_string __skreturn = __sklib__base64_encode__string_ref(__skparam__input);
+    __skadapter__free__sklib_string(__skparam__input);
+    return __skadapter__to_string(__skreturn);
+}
+unsigned int bin_to_dec(const string &bin) {
+    const __sklib_string __skparam__bin = __skadapter__to_sklib_string(bin);
+    unsigned int __skreturn = __sklib__bin_to_dec__string_ref(__skparam__bin);
+    __skadapter__free__sklib_string(__skparam__bin);
+    return __skadapter__to_unsigned_int(__skreturn);
+}
+string bin_to_hex(const string &bin_str) {
+    const __sklib_string __skparam__bin_str = __skadapter__to_sklib_string(bin_str);
+    __sklib_string __skreturn = __sklib__bin_to_hex__string_ref(__skparam__bin_str);
+    __skadapter__free__sklib_string(__skparam__bin_str);
+    return __skadapter__to_string(__skreturn);
+}
 bool contains(const string &text, const string &subtext) {
     const __sklib_string __skparam__text = __skadapter__to_sklib_string(text);
     const __sklib_string __skparam__subtext = __skadapter__to_sklib_string(subtext);
@@ -258,6 +282,22 @@ int convert_to_integer(const string &text) {
     int __skreturn = __sklib__convert_to_integer__string_ref(__skparam__text);
     __skadapter__free__sklib_string(__skparam__text);
     return __skadapter__to_int(__skreturn);
+}
+string dec_to_bin(unsigned int dec) {
+    unsigned int __skparam__dec = __skadapter__to_unsigned_int(dec);
+    __sklib_string __skreturn = __sklib__dec_to_bin__unsigned_int(__skparam__dec);
+    return __skadapter__to_string(__skreturn);
+}
+string dec_to_oct(unsigned int decimal_value) {
+    unsigned int __skparam__decimal_value = __skadapter__to_unsigned_int(decimal_value);
+    __sklib_string __skreturn = __sklib__dec_to_oct__unsigned_int(__skparam__decimal_value);
+    return __skadapter__to_string(__skreturn);
+}
+string hex_to_bin(const string &hex_str) {
+    const __sklib_string __skparam__hex_str = __skadapter__to_sklib_string(hex_str);
+    __sklib_string __skreturn = __sklib__hex_to_bin__string_ref(__skparam__hex_str);
+    __skadapter__free__sklib_string(__skparam__hex_str);
+    return __skadapter__to_string(__skreturn);
 }
 int index_of(const string &text, const string &subtext) {
     const __sklib_string __skparam__text = __skadapter__to_sklib_string(text);
@@ -290,6 +330,12 @@ int length_of(const string &text) {
     int __skreturn = __sklib__length_of__string_ref(__skparam__text);
     __skadapter__free__sklib_string(__skparam__text);
     return __skadapter__to_int(__skreturn);
+}
+unsigned int oct_to_dec(const string &octal_string) {
+    const __sklib_string __skparam__octal_string = __skadapter__to_sklib_string(octal_string);
+    unsigned int __skreturn = __sklib__oct_to_dec__string_ref(__skparam__octal_string);
+    __skadapter__free__sklib_string(__skparam__octal_string);
+    return __skadapter__to_unsigned_int(__skreturn);
 }
 string replace_all(const string &text, const string &substr, const string &newText) {
     const __sklib_string __skparam__text = __skadapter__to_sklib_string(text);
@@ -3803,6 +3849,12 @@ string hex_to_dec_string(const string &a_hex) {
     __skadapter__free__sklib_string(__skparam__a_hex);
     return __skadapter__to_string(__skreturn);
 }
+string hex_to_mac(const string &hex_str) {
+    const __sklib_string __skparam__hex_str = __skadapter__to_sklib_string(hex_str);
+    __sklib_string __skreturn = __sklib__hex_to_mac__string_ref(__skparam__hex_str);
+    __skadapter__free__sklib_string(__skparam__hex_str);
+    return __skadapter__to_string(__skreturn);
+}
 unsigned int ipv4_to_dec(const string &a_ip) {
     const __sklib_string __skparam__a_ip = __skadapter__to_sklib_string(a_ip);
     unsigned int __skreturn = __sklib__ipv4_to_dec__string_ref(__skparam__a_ip);
@@ -3841,6 +3893,12 @@ connection last_connection(server_socket server) {
     __sklib_server_socket __skparam__server = __skadapter__to_sklib_server_socket(server);
     __sklib_connection __skreturn = __sklib__last_connection__server_socket(__skparam__server);
     return __skadapter__to_connection(__skreturn);
+}
+string mac_to_hex(const string &mac_address) {
+    const __sklib_string __skparam__mac_address = __skadapter__to_sklib_string(mac_address);
+    __sklib_string __skreturn = __sklib__mac_to_hex__string_ref(__skparam__mac_address);
+    __skadapter__free__sklib_string(__skparam__mac_address);
+    return __skadapter__to_string(__skreturn);
 }
 connection message_connection(message msg) {
     __sklib_message __skparam__msg = __skadapter__to_sklib_message(msg);

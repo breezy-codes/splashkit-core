@@ -217,6 +217,26 @@ void __sklib__close_audio() {
 void __sklib__open_audio() {
     open_audio();
 }
+__sklib_string __sklib__base64_decode__string_ref(const __sklib_string input) {
+    string __skparam__input = __sklib__to_string(input);
+    string __skreturn = base64_decode(__skparam__input);
+    return __sklib__to_sklib_string(__skreturn);
+}
+__sklib_string __sklib__base64_encode__string_ref(const __sklib_string input) {
+    string __skparam__input = __sklib__to_string(input);
+    string __skreturn = base64_encode(__skparam__input);
+    return __sklib__to_sklib_string(__skreturn);
+}
+unsigned int __sklib__bin_to_dec__string_ref(const __sklib_string bin) {
+    string __skparam__bin = __sklib__to_string(bin);
+    unsigned int __skreturn = bin_to_dec(__skparam__bin);
+    return __sklib__to_unsigned_int(__skreturn);
+}
+__sklib_string __sklib__bin_to_hex__string_ref(const __sklib_string bin_str) {
+    string __skparam__bin_str = __sklib__to_string(bin_str);
+    string __skreturn = bin_to_hex(__skparam__bin_str);
+    return __sklib__to_sklib_string(__skreturn);
+}
 int __sklib__contains__string_ref__string_ref(const __sklib_string text, const __sklib_string subtext) {
     string __skparam__text = __sklib__to_string(text);
     string __skparam__subtext = __sklib__to_string(subtext);
@@ -232,6 +252,21 @@ int __sklib__convert_to_integer__string_ref(const __sklib_string text) {
     string __skparam__text = __sklib__to_string(text);
     int __skreturn = convert_to_integer(__skparam__text);
     return __sklib__to_int(__skreturn);
+}
+__sklib_string __sklib__dec_to_bin__unsigned_int(unsigned int dec) {
+    unsigned int __skparam__dec = __sklib__to_unsigned_int(dec);
+    string __skreturn = dec_to_bin(__skparam__dec);
+    return __sklib__to_sklib_string(__skreturn);
+}
+__sklib_string __sklib__dec_to_oct__unsigned_int(unsigned int decimal_value) {
+    unsigned int __skparam__decimal_value = __sklib__to_unsigned_int(decimal_value);
+    string __skreturn = dec_to_oct(__skparam__decimal_value);
+    return __sklib__to_sklib_string(__skreturn);
+}
+__sklib_string __sklib__hex_to_bin__string_ref(const __sklib_string hex_str) {
+    string __skparam__hex_str = __sklib__to_string(hex_str);
+    string __skreturn = hex_to_bin(__skparam__hex_str);
+    return __sklib__to_sklib_string(__skreturn);
 }
 int __sklib__index_of__string_ref__string_ref(const __sklib_string text, const __sklib_string subtext) {
     string __skparam__text = __sklib__to_string(text);
@@ -258,6 +293,11 @@ int __sklib__length_of__string_ref(const __sklib_string text) {
     string __skparam__text = __sklib__to_string(text);
     int __skreturn = length_of(__skparam__text);
     return __sklib__to_int(__skreturn);
+}
+unsigned int __sklib__oct_to_dec__string_ref(const __sklib_string octal_string) {
+    string __skparam__octal_string = __sklib__to_string(octal_string);
+    unsigned int __skreturn = oct_to_dec(__skparam__octal_string);
+    return __sklib__to_unsigned_int(__skreturn);
 }
 __sklib_string __sklib__replace_all__string_ref__string_ref__string_ref(const __sklib_string text, const __sklib_string substr, const __sklib_string newText) {
     string __skparam__text = __sklib__to_string(text);
@@ -3648,6 +3688,11 @@ __sklib_string __sklib__hex_to_dec_string__string_ref(const __sklib_string a_hex
     string __skreturn = hex_to_dec_string(__skparam__a_hex);
     return __sklib__to_sklib_string(__skreturn);
 }
+__sklib_string __sklib__hex_to_mac__string_ref(const __sklib_string hex_str) {
+    string __skparam__hex_str = __sklib__to_string(hex_str);
+    string __skreturn = hex_to_mac(__skparam__hex_str);
+    return __sklib__to_sklib_string(__skreturn);
+}
 unsigned int __sklib__ipv4_to_dec__string_ref(const __sklib_string a_ip) {
     string __skparam__a_ip = __sklib__to_string(a_ip);
     unsigned int __skreturn = ipv4_to_dec(__skparam__a_ip);
@@ -3682,6 +3727,11 @@ __sklib_connection __sklib__last_connection__server_socket(__sklib_server_socket
     server_socket __skparam__server = __sklib__to_server_socket(server);
     connection __skreturn = last_connection(__skparam__server);
     return __sklib__to_sklib_connection(__skreturn);
+}
+__sklib_string __sklib__mac_to_hex__string_ref(const __sklib_string mac_address) {
+    string __skparam__mac_address = __sklib__to_string(mac_address);
+    string __skreturn = mac_to_hex(__skparam__mac_address);
+    return __sklib__to_sklib_string(__skreturn);
 }
 __sklib_connection __sklib__message_connection__message(__sklib_message msg) {
     message __skparam__msg = __sklib__to_message(msg);
