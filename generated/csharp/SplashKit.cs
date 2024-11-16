@@ -1164,6 +1164,9 @@ namespace SplashKitSDK
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__bin_to_hex__string_ref", CharSet=CharSet.Ansi)]
     private static extern __sklib_string __sklib__bin_to_hex__string_ref(__sklib_string binStr);
 
+    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__bin_to_oct__string_ref", CharSet=CharSet.Ansi)]
+    private static extern __sklib_string __sklib__bin_to_oct__string_ref(__sklib_string binStr);
+
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__contains__string_ref__string_ref", CharSet=CharSet.Ansi)]
     private static extern int __sklib__contains__string_ref__string_ref(__sklib_string text, __sklib_string subtext);
 
@@ -1182,6 +1185,9 @@ namespace SplashKitSDK
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__hex_to_bin__string_ref", CharSet=CharSet.Ansi)]
     private static extern __sklib_string __sklib__hex_to_bin__string_ref(__sklib_string hexStr);
 
+    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__hex_to_oct__string_ref", CharSet=CharSet.Ansi)]
+    private static extern __sklib_string __sklib__hex_to_oct__string_ref(__sklib_string hexStr);
+
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__index_of__string_ref__string_ref", CharSet=CharSet.Ansi)]
     private static extern int __sklib__index_of__string_ref__string_ref(__sklib_string text, __sklib_string subtext);
 
@@ -1197,8 +1203,14 @@ namespace SplashKitSDK
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__length_of__string_ref", CharSet=CharSet.Ansi)]
     private static extern int __sklib__length_of__string_ref(__sklib_string text);
 
+    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__oct_to_bin__string_ref", CharSet=CharSet.Ansi)]
+    private static extern __sklib_string __sklib__oct_to_bin__string_ref(__sklib_string octalStr);
+
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__oct_to_dec__string_ref", CharSet=CharSet.Ansi)]
     private static extern uint __sklib__oct_to_dec__string_ref(__sklib_string octalString);
+
+    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__oct_to_hex__string_ref", CharSet=CharSet.Ansi)]
+    private static extern __sklib_string __sklib__oct_to_hex__string_ref(__sklib_string octStr);
 
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__replace_all__string_ref__string_ref__string_ref", CharSet=CharSet.Ansi)]
     private static extern __sklib_string __sklib__replace_all__string_ref__string_ref__string_ref(__sklib_string text, __sklib_string substr, __sklib_string newtext);
@@ -3155,6 +3167,12 @@ namespace SplashKitSDK
 
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__is_connection_open__string_ref", CharSet=CharSet.Ansi)]
     private static extern int __sklib__is_connection_open__string_ref(__sklib_string name);
+
+    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__is_valid_ipv4__string_ref", CharSet=CharSet.Ansi)]
+    private static extern int __sklib__is_valid_ipv4__string_ref(__sklib_string ip);
+
+    [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__is_valid_mac__string_ref", CharSet=CharSet.Ansi)]
+    private static extern int __sklib__is_valid_mac__string_ref(__sklib_string mac);
 
     [DllImport("SplashKit", CallingConvention=CallingConvention.Cdecl, EntryPoint="__sklib__last_connection__string_ref", CharSet=CharSet.Ansi)]
     private static extern __sklib_ptr __sklib__last_connection__string_ref(__sklib_string name);
@@ -5223,6 +5241,15 @@ namespace SplashKitSDK
     __skadapter__free__sklib_string(ref __skparam__bin_str);
       return __skadapter__to_string(__skreturn);
     }
+    public static string BinToOct(string binStr)
+    {
+      __sklib_string __skparam__bin_str;
+      __sklib_string __skreturn;
+      __skparam__bin_str = __skadapter__to_sklib_string(binStr);
+      __skreturn = __sklib__bin_to_oct__string_ref(__skparam__bin_str);
+    __skadapter__free__sklib_string(ref __skparam__bin_str);
+      return __skadapter__to_string(__skreturn);
+    }
     public static bool Contains(string text, string subtext)
     {
       __sklib_string __skparam__text;
@@ -5278,6 +5305,15 @@ namespace SplashKitSDK
     __skadapter__free__sklib_string(ref __skparam__hex_str);
       return __skadapter__to_string(__skreturn);
     }
+    public static string HexToOct(string hexStr)
+    {
+      __sklib_string __skparam__hex_str;
+      __sklib_string __skreturn;
+      __skparam__hex_str = __skadapter__to_sklib_string(hexStr);
+      __skreturn = __sklib__hex_to_oct__string_ref(__skparam__hex_str);
+    __skadapter__free__sklib_string(ref __skparam__hex_str);
+      return __skadapter__to_string(__skreturn);
+    }
     public static int IndexOf(string text, string subtext)
     {
       __sklib_string __skparam__text;
@@ -5326,6 +5362,15 @@ namespace SplashKitSDK
     __skadapter__free__sklib_string(ref __skparam__text);
       return __skadapter__to_int(__skreturn);
     }
+    public static string OctToBin(string octalStr)
+    {
+      __sklib_string __skparam__octal_str;
+      __sklib_string __skreturn;
+      __skparam__octal_str = __skadapter__to_sklib_string(octalStr);
+      __skreturn = __sklib__oct_to_bin__string_ref(__skparam__octal_str);
+    __skadapter__free__sklib_string(ref __skparam__octal_str);
+      return __skadapter__to_string(__skreturn);
+    }
     public static uint OctToDec(string octalString)
     {
       __sklib_string __skparam__octal_string;
@@ -5334,6 +5379,15 @@ namespace SplashKitSDK
       __skreturn = __sklib__oct_to_dec__string_ref(__skparam__octal_string);
     __skadapter__free__sklib_string(ref __skparam__octal_string);
       return __skadapter__to_unsigned_int(__skreturn);
+    }
+    public static string OctToHex(string octStr)
+    {
+      __sklib_string __skparam__oct_str;
+      __sklib_string __skreturn;
+      __skparam__oct_str = __skadapter__to_sklib_string(octStr);
+      __skreturn = __sklib__oct_to_hex__string_ref(__skparam__oct_str);
+    __skadapter__free__sklib_string(ref __skparam__oct_str);
+      return __skadapter__to_string(__skreturn);
     }
     public static string ReplaceAll(string text, string substr, string newtext)
     {
@@ -10980,6 +11034,24 @@ namespace SplashKitSDK
       __skparam__name = __skadapter__to_sklib_string(name);
       __skreturn = __sklib__is_connection_open__string_ref(__skparam__name);
     __skadapter__free__sklib_string(ref __skparam__name);
+      return __skadapter__to_bool(__skreturn);
+    }
+    public static bool IsValidIpv4(string ip)
+    {
+      __sklib_string __skparam__ip;
+      int __skreturn;
+      __skparam__ip = __skadapter__to_sklib_string(ip);
+      __skreturn = __sklib__is_valid_ipv4__string_ref(__skparam__ip);
+    __skadapter__free__sklib_string(ref __skparam__ip);
+      return __skadapter__to_bool(__skreturn);
+    }
+    public static bool IsValidMac(string mac)
+    {
+      __sklib_string __skparam__mac;
+      int __skreturn;
+      __skparam__mac = __skadapter__to_sklib_string(mac);
+      __skreturn = __sklib__is_valid_mac__string_ref(__skparam__mac);
+    __skadapter__free__sklib_string(ref __skparam__mac);
       return __skadapter__to_bool(__skreturn);
     }
     public static Connection LastConnection(string name)

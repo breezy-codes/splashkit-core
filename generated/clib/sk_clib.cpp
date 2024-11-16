@@ -237,6 +237,11 @@ __sklib_string __sklib__bin_to_hex__string_ref(const __sklib_string bin_str) {
     string __skreturn = bin_to_hex(__skparam__bin_str);
     return __sklib__to_sklib_string(__skreturn);
 }
+__sklib_string __sklib__bin_to_oct__string_ref(const __sklib_string bin_str) {
+    string __skparam__bin_str = __sklib__to_string(bin_str);
+    string __skreturn = bin_to_oct(__skparam__bin_str);
+    return __sklib__to_sklib_string(__skreturn);
+}
 int __sklib__contains__string_ref__string_ref(const __sklib_string text, const __sklib_string subtext) {
     string __skparam__text = __sklib__to_string(text);
     string __skparam__subtext = __sklib__to_string(subtext);
@@ -268,6 +273,11 @@ __sklib_string __sklib__hex_to_bin__string_ref(const __sklib_string hex_str) {
     string __skreturn = hex_to_bin(__skparam__hex_str);
     return __sklib__to_sklib_string(__skreturn);
 }
+__sklib_string __sklib__hex_to_oct__string_ref(const __sklib_string hex_str) {
+    string __skparam__hex_str = __sklib__to_string(hex_str);
+    string __skreturn = hex_to_oct(__skparam__hex_str);
+    return __sklib__to_sklib_string(__skreturn);
+}
 int __sklib__index_of__string_ref__string_ref(const __sklib_string text, const __sklib_string subtext) {
     string __skparam__text = __sklib__to_string(text);
     string __skparam__subtext = __sklib__to_string(subtext);
@@ -294,10 +304,20 @@ int __sklib__length_of__string_ref(const __sklib_string text) {
     int __skreturn = length_of(__skparam__text);
     return __sklib__to_int(__skreturn);
 }
+__sklib_string __sklib__oct_to_bin__string_ref(const __sklib_string octal_str) {
+    string __skparam__octal_str = __sklib__to_string(octal_str);
+    string __skreturn = oct_to_bin(__skparam__octal_str);
+    return __sklib__to_sklib_string(__skreturn);
+}
 unsigned int __sklib__oct_to_dec__string_ref(const __sklib_string octal_string) {
     string __skparam__octal_string = __sklib__to_string(octal_string);
     unsigned int __skreturn = oct_to_dec(__skparam__octal_string);
     return __sklib__to_unsigned_int(__skreturn);
+}
+__sklib_string __sklib__oct_to_hex__string_ref(const __sklib_string oct_str) {
+    string __skparam__oct_str = __sklib__to_string(oct_str);
+    string __skreturn = oct_to_hex(__skparam__oct_str);
+    return __sklib__to_sklib_string(__skreturn);
 }
 __sklib_string __sklib__replace_all__string_ref__string_ref__string_ref(const __sklib_string text, const __sklib_string substr, const __sklib_string newText) {
     string __skparam__text = __sklib__to_string(text);
@@ -3716,6 +3736,16 @@ int __sklib__is_connection_open__connection(__sklib_connection con) {
 int __sklib__is_connection_open__string_ref(const __sklib_string name) {
     string __skparam__name = __sklib__to_string(name);
     bool __skreturn = is_connection_open(__skparam__name);
+    return __sklib__to_int(__skreturn);
+}
+int __sklib__is_valid_ipv4__string_ref(const __sklib_string ip) {
+    string __skparam__ip = __sklib__to_string(ip);
+    bool __skreturn = is_valid_ipv4(__skparam__ip);
+    return __sklib__to_int(__skreturn);
+}
+int __sklib__is_valid_mac__string_ref(const __sklib_string mac) {
+    string __skparam__mac = __sklib__to_string(mac);
+    bool __skreturn = is_valid_mac(__skparam__mac);
     return __sklib__to_int(__skreturn);
 }
 __sklib_connection __sklib__last_connection__string_ref(const __sklib_string name) {

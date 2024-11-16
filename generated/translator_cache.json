@@ -2045,7 +2045,7 @@
     "group": "utilities",
     "brief": "SplashKit provides some basic data manipulation functions to\nhelp make it easy to get some basic tasks performed.",
     "description": null,
-    "parsed_at": 1731296296,
+    "parsed_at": 1731644227,
     "path": "coresdk/src/coresdk/basics.h",
     "functions": [
       {
@@ -2171,6 +2171,43 @@
         "return": {
           "type": "string",
           "description": "Hexadecimal string representation of the binary string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "bin_str": {
+            "type": "string",
+            "description": "Binary string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        }
+      },
+      {
+        "signature": "string bin_to_oct(const string &bin_str);",
+        "name": "bin_to_oct",
+        "method_name": null,
+        "unique_global_name": "bin_to_oct",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided binary string into its octal string representation.\nFor example, \"1010\" will be converted to \"12\".",
+        "brief": "Converts a binary string to an octal string",
+        "return": {
+          "type": "string",
+          "description": "Octal string representation of the binary string",
           "is_pointer": false,
           "is_reference": false,
           "is_vector": false,
@@ -2432,6 +2469,43 @@
         }
       },
       {
+        "signature": "string hex_to_oct(const string &hex_str);",
+        "name": "hex_to_oct",
+        "method_name": null,
+        "unique_global_name": "hex_to_oct",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided hexadecimal string into its octal string representation.\nFor example, \"A\" will be converted to \"12\".",
+        "brief": "Converts a hexadecimal string to an octal string",
+        "return": {
+          "type": "string",
+          "description": "Octal string representation of the hexadecimal string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "hex_str": {
+            "type": "string",
+            "description": "Hexadecimal string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        }
+      },
+      {
         "signature": "int index_of(const string &text,const string &subtext);",
         "name": "index_of",
         "method_name": null,
@@ -2630,6 +2704,43 @@
         }
       },
       {
+        "signature": "string oct_to_bin(const string &octal_str);",
+        "name": "oct_to_bin",
+        "method_name": null,
+        "unique_global_name": "oct_to_bin",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided octal string into its binary string representation.\nFor example, \"12\" will be converted to \"1010\".",
+        "brief": "Converts an octal string to a binary string",
+        "return": {
+          "type": "string",
+          "description": "Binary string representation of the octal string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "octal_str": {
+            "type": "string",
+            "description": "Octal string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        }
+      },
+      {
         "signature": "unsigned int oct_to_dec(const string &octal_string);",
         "name": "oct_to_dec",
         "method_name": null,
@@ -2648,6 +2759,43 @@
         },
         "parameters": {
           "octal_string": {
+            "type": "string",
+            "description": "Octal string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        }
+      },
+      {
+        "signature": "string oct_to_hex(const string &oct_str);",
+        "name": "oct_to_hex",
+        "method_name": null,
+        "unique_global_name": "oct_to_hex",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts the provided octal string into its hexadecimal string representation.\nFor example, \"12\" will be converted to \"A\".",
+        "brief": "Converts an octal string to a hexadecimal string",
+        "return": {
+          "type": "string",
+          "description": "Hexadecimal string representation of the octal string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "oct_str": {
             "type": "string",
             "description": "Octal string to convert",
             "is_pointer": false,
@@ -32511,7 +32659,7 @@
     "group": "networking",
     "brief": "SplashKit's network-related functions allow you to communicate data\nacross networks.",
     "description": null,
-    "parsed_at": 1731296955,
+    "parsed_at": 1731644229,
     "path": "coresdk/src/coresdk/networking.h",
     "functions": [
       {
@@ -34159,7 +34307,7 @@
         }
       },
       {
-        "signature": "bool is_valid_mac(const std::string &mac);",
+        "signature": "bool is_valid_mac(const string &mac);",
         "name": "is_valid_mac",
         "method_name": null,
         "unique_global_name": "is_valid_mac",
@@ -34177,11 +34325,11 @@
         },
         "parameters": {
           "mac": {
-            "type": "std",
+            "type": "string",
             "description": "The string containing the MAC address to validate",
             "is_pointer": false,
             "is_const": true,
-            "is_reference": false,
+            "is_reference": true,
             "is_array": false,
             "array_dimension_sizes": [
 

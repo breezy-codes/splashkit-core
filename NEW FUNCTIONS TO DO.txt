@@ -12,13 +12,15 @@ octal to binary - done
 binary to octal - done
 hex to octal - done
 octal to hex - done
-
 bas64 encoding - done
-base64 decoding - doing
+base64 decoding - done
 
 Should move these from networking to utilities:
 dec to hex
 hex to dec 
+
+
+Check into stegonography - hiding data in images
 
 
 TO DO:
@@ -33,6 +35,8 @@ UTF-16 encoding
 UTF-16 decoding
 validate port number
 extract domain from URL
+
+
 
 
 
