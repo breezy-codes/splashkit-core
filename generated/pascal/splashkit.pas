@@ -441,12 +441,15 @@ function ConvertToInteger(const text: String): Integer;
 function DecToBin(dec: Cardinal): String;
 function DecToOct(decimalValue: Cardinal): String;
 function HexToBin(const hexStr: String): String;
+function HexToMac(const hexStr: String): String;
 function HexToOct(const hexStr: String): String;
 function IndexOf(const text: String; const subtext: String): Integer;
 function IsDouble(const text: String): Boolean;
 function IsInteger(const text: String): Boolean;
 function IsNumber(const text: String): Boolean;
+function IsValidMac(const macAddress: String): Boolean;
 function LengthOf(const text: String): Integer;
+function MacToHex(const macAddress: String): String;
 function OctToBin(const octalStr: String): String;
 function OctToDec(const octalString: String): Cardinal;
 function OctToHex(const octStr: String): String;
@@ -1103,7 +1106,7 @@ function Ipv4ToStr(ip: Cardinal): String;
 function IsConnectionOpen(con: Connection): Boolean;
 function IsConnectionOpen(const name: String): Boolean;
 function IsValidIpv4(const ip: String): Boolean;
-function IsValidMac(const mac: String): Boolean;
+function IsValidMac(const macAddress: String): Boolean;
 function LastConnection(const name: String): Connection;
 function LastConnection(server: ServerSocket): Connection;
 function MacToHex(const macAddress: String): String;
@@ -2672,12 +2675,15 @@ function __sklib__convert_to_integer__string_ref(const text: __sklib_string): In
 function __sklib__dec_to_bin__unsigned_int(dec: Cardinal): __sklib_string; cdecl; external;
 function __sklib__dec_to_oct__unsigned_int(decimalValue: Cardinal): __sklib_string; cdecl; external;
 function __sklib__hex_to_bin__string_ref(const hexStr: __sklib_string): __sklib_string; cdecl; external;
+function __sklib__hex_to_mac__string_ref(const hexStr: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__hex_to_oct__string_ref(const hexStr: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__index_of__string_ref__string_ref(const text: __sklib_string; const subtext: __sklib_string): Integer; cdecl; external;
 function __sklib__is_double__string_ref(const text: __sklib_string): LongInt; cdecl; external;
 function __sklib__is_integer__string_ref(const text: __sklib_string): LongInt; cdecl; external;
 function __sklib__is_number__string_ref(const text: __sklib_string): LongInt; cdecl; external;
+function __sklib__is_valid_mac__string_ref(const macAddress: __sklib_string): LongInt; cdecl; external;
 function __sklib__length_of__string_ref(const text: __sklib_string): Integer; cdecl; external;
+function __sklib__mac_to_hex__string_ref(const macAddress: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__oct_to_bin__string_ref(const octalStr: __sklib_string): __sklib_string; cdecl; external;
 function __sklib__oct_to_dec__string_ref(const octalString: __sklib_string): Cardinal; cdecl; external;
 function __sklib__oct_to_hex__string_ref(const octStr: __sklib_string): __sklib_string; cdecl; external;
@@ -3334,7 +3340,7 @@ function __sklib__ipv4_to_str__unsigned_int(ip: Cardinal): __sklib_string; cdecl
 function __sklib__is_connection_open__connection(con: __sklib_ptr): LongInt; cdecl; external;
 function __sklib__is_connection_open__string_ref(const name: __sklib_string): LongInt; cdecl; external;
 function __sklib__is_valid_ipv4__string_ref(const ip: __sklib_string): LongInt; cdecl; external;
-function __sklib__is_valid_mac__string_ref(const mac: __sklib_string): LongInt; cdecl; external;
+function __sklib__is_valid_mac__string_ref(const macAddress: __sklib_string): LongInt; cdecl; external;
 function __sklib__last_connection__string_ref(const name: __sklib_string): __sklib_ptr; cdecl; external;
 function __sklib__last_connection__server_socket(server: __sklib_ptr): __sklib_ptr; cdecl; external;
 function __sklib__mac_to_hex__string_ref(const macAddress: __sklib_string): __sklib_string; cdecl; external;
@@ -4371,6 +4377,15 @@ begin
   __skreturn := __sklib__hex_to_bin__string_ref(__skparam__hex_str);
   result := __skadapter__to_string(__skreturn);
 end;
+function HexToMac(const hexStr: String): String;
+var
+  __skparam__hex_str: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__hex_str := __skadapter__to_sklib_string(hexStr);
+  __skreturn := __sklib__hex_to_mac__string_ref(__skparam__hex_str);
+  result := __skadapter__to_string(__skreturn);
+end;
 function HexToOct(const hexStr: String): String;
 var
   __skparam__hex_str: __sklib_string;
@@ -4418,6 +4433,15 @@ begin
   __skreturn := __sklib__is_number__string_ref(__skparam__text);
   result := __skadapter__to_bool(__skreturn);
 end;
+function IsValidMac(const macAddress: String): Boolean;
+var
+  __skparam__mac_address: __sklib_string;
+  __skreturn: LongInt;
+begin
+  __skparam__mac_address := __skadapter__to_sklib_string(macAddress);
+  __skreturn := __sklib__is_valid_mac__string_ref(__skparam__mac_address);
+  result := __skadapter__to_bool(__skreturn);
+end;
 function LengthOf(const text: String): Integer;
 var
   __skparam__text: __sklib_string;
@@ -4426,6 +4450,15 @@ begin
   __skparam__text := __skadapter__to_sklib_string(text);
   __skreturn := __sklib__length_of__string_ref(__skparam__text);
   result := __skadapter__to_int(__skreturn);
+end;
+function MacToHex(const macAddress: String): String;
+var
+  __skparam__mac_address: __sklib_string;
+  __skreturn: __sklib_string;
+begin
+  __skparam__mac_address := __skadapter__to_sklib_string(macAddress);
+  __skreturn := __sklib__mac_to_hex__string_ref(__skparam__mac_address);
+  result := __skadapter__to_string(__skreturn);
 end;
 function OctToBin(const octalStr: String): String;
 var
@@ -10609,13 +10642,13 @@ begin
   __skreturn := __sklib__is_valid_ipv4__string_ref(__skparam__ip);
   result := __skadapter__to_bool(__skreturn);
 end;
-function IsValidMac(const mac: String): Boolean;
+function IsValidMac(const macAddress: String): Boolean;
 var
-  __skparam__mac: __sklib_string;
+  __skparam__mac_address: __sklib_string;
   __skreturn: LongInt;
 begin
-  __skparam__mac := __skadapter__to_sklib_string(mac);
-  __skreturn := __sklib__is_valid_mac__string_ref(__skparam__mac);
+  __skparam__mac_address := __skadapter__to_sklib_string(macAddress);
+  __skreturn := __sklib__is_valid_mac__string_ref(__skparam__mac_address);
   result := __skadapter__to_bool(__skreturn);
 end;
 function LastConnection(const name: String): Connection;

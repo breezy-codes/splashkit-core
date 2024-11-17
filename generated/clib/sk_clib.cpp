@@ -273,6 +273,11 @@ __sklib_string __sklib__hex_to_bin__string_ref(const __sklib_string hex_str) {
     string __skreturn = hex_to_bin(__skparam__hex_str);
     return __sklib__to_sklib_string(__skreturn);
 }
+__sklib_string __sklib__hex_to_mac__string_ref(const __sklib_string hex_str) {
+    string __skparam__hex_str = __sklib__to_string(hex_str);
+    string __skreturn = hex_to_mac(__skparam__hex_str);
+    return __sklib__to_sklib_string(__skreturn);
+}
 __sklib_string __sklib__hex_to_oct__string_ref(const __sklib_string hex_str) {
     string __skparam__hex_str = __sklib__to_string(hex_str);
     string __skreturn = hex_to_oct(__skparam__hex_str);
@@ -299,10 +304,20 @@ int __sklib__is_number__string_ref(const __sklib_string text) {
     bool __skreturn = is_number(__skparam__text);
     return __sklib__to_int(__skreturn);
 }
+int __sklib__is_valid_mac__string_ref(const __sklib_string mac_address) {
+    string __skparam__mac_address = __sklib__to_string(mac_address);
+    bool __skreturn = is_valid_mac(__skparam__mac_address);
+    return __sklib__to_int(__skreturn);
+}
 int __sklib__length_of__string_ref(const __sklib_string text) {
     string __skparam__text = __sklib__to_string(text);
     int __skreturn = length_of(__skparam__text);
     return __sklib__to_int(__skreturn);
+}
+__sklib_string __sklib__mac_to_hex__string_ref(const __sklib_string mac_address) {
+    string __skparam__mac_address = __sklib__to_string(mac_address);
+    string __skreturn = mac_to_hex(__skparam__mac_address);
+    return __sklib__to_sklib_string(__skreturn);
 }
 __sklib_string __sklib__oct_to_bin__string_ref(const __sklib_string octal_str) {
     string __skparam__octal_str = __sklib__to_string(octal_str);
@@ -3743,9 +3758,9 @@ int __sklib__is_valid_ipv4__string_ref(const __sklib_string ip) {
     bool __skreturn = is_valid_ipv4(__skparam__ip);
     return __sklib__to_int(__skreturn);
 }
-int __sklib__is_valid_mac__string_ref(const __sklib_string mac) {
-    string __skparam__mac = __sklib__to_string(mac);
-    bool __skreturn = is_valid_mac(__skparam__mac);
+int __sklib__is_valid_mac__string_ref(const __sklib_string mac_address) {
+    string __skparam__mac_address = __sklib__to_string(mac_address);
+    bool __skreturn = is_valid_mac(__skparam__mac_address);
     return __sklib__to_int(__skreturn);
 }
 __sklib_connection __sklib__last_connection__string_ref(const __sklib_string name) {

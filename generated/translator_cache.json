@@ -2045,7 +2045,7 @@
     "group": "utilities",
     "brief": "SplashKit provides some basic data manipulation functions to\nhelp make it easy to get some basic tasks performed.",
     "description": null,
-    "parsed_at": 1731644227,
+    "parsed_at": 1731880446,
     "path": "coresdk/src/coresdk/basics.h",
     "functions": [
       {
@@ -2469,6 +2469,43 @@
         }
       },
       {
+        "signature": "string hex_to_mac(const string &hex_str);",
+        "name": "hex_to_mac",
+        "method_name": null,
+        "unique_global_name": "hex_to_mac",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts a hexadecimal representation of a MAC address back to its standard format.\ne.g. 01:23:45:67:89:AB from 0x0123456789AB",
+        "brief": "Converts a hexadecimal string to a MAC address",
+        "return": {
+          "type": "string",
+          "description": "MAC address as a string in the format XX:XX:XX:XX:XX:XX",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "hex_str": {
+            "type": "string",
+            "description": "hexadecimal string to convert",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        }
+      },
+      {
         "signature": "string hex_to_oct(const string &hex_str);",
         "name": "hex_to_oct",
         "method_name": null,
@@ -2667,6 +2704,43 @@
         }
       },
       {
+        "signature": "bool is_valid_mac(const string &mac_address);",
+        "name": "is_valid_mac",
+        "method_name": null,
+        "unique_global_name": "is_valid_mac",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Checks if the supplied MAC address is valid.",
+        "brief": "Checks if a MAC address is valid",
+        "return": {
+          "type": "bool",
+          "description": "true if the MAC address is valid",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "mac_address": {
+            "type": "string",
+            "description": "MAC address to check",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        }
+      },
+      {
         "signature": "int length_of(const string &text);",
         "name": "length_of",
         "method_name": null,
@@ -2687,6 +2761,43 @@
           "text": {
             "type": "string",
             "description": "The text to get the length of",
+            "is_pointer": false,
+            "is_const": true,
+            "is_reference": true,
+            "is_array": false,
+            "array_dimension_sizes": [
+
+            ],
+            "is_vector": false,
+            "type_parameter": null
+          }
+        },
+        "attributes": {
+          "group": "utilities",
+          "static": "utilities"
+        }
+      },
+      {
+        "signature": "string mac_to_hex(const string &mac_address);",
+        "name": "mac_to_hex",
+        "method_name": null,
+        "unique_global_name": "mac_to_hex",
+        "unique_method_name": null,
+        "suffix_name": null,
+        "description": "Converts a MAC address into its hexadecimal representation.\ne.g. 0x0123456789AB from 01:23:45:67:89:AB",
+        "brief": "Converts a MAC address string to its hexadecimal representation",
+        "return": {
+          "type": "string",
+          "description": "hexadecimal representation of MAC address as a string",
+          "is_pointer": false,
+          "is_reference": false,
+          "is_vector": false,
+          "type_parameter": null
+        },
+        "parameters": {
+          "mac_address": {
+            "type": "string",
+            "description": "MAC address to convert",
             "is_pointer": false,
             "is_const": true,
             "is_reference": true,
@@ -5639,7 +5750,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1731296298,
+    "parsed_at": 1731880447,
     "path": "coresdk/src/coresdk/circle_geometry.h",
     "functions": [
       {
@@ -21550,7 +21661,7 @@
     "group": "interface",
     "brief": "SplashKit Interface provides functions to create user interfaces, with elements such as draggable panels, buttons and text boxes.",
     "description": "SplashKit`s interface library provides various functions for creating\npanels, and drawing interface elements such as buttons, text boxes, and more",
-    "parsed_at": 1731296312,
+    "parsed_at": 1731880449,
     "path": "coresdk/src/coresdk/interface.h",
     "functions": [
       {
@@ -31629,7 +31740,7 @@
     "group": "audio",
     "brief": null,
     "description": null,
-    "parsed_at": 1731296319,
+    "parsed_at": 1731880450,
     "path": "coresdk/src/coresdk/music.h",
     "functions": [
       {
@@ -32659,7 +32770,7 @@
     "group": "networking",
     "brief": "SplashKit's network-related functions allow you to communicate data\nacross networks.",
     "description": null,
-    "parsed_at": 1731644229,
+    "parsed_at": 1731880452,
     "path": "coresdk/src/coresdk/networking.h",
     "functions": [
       {
@@ -34307,26 +34418,26 @@
         }
       },
       {
-        "signature": "bool is_valid_mac(const string &mac);",
+        "signature": "bool is_valid_mac(const string &mac_address);",
         "name": "is_valid_mac",
         "method_name": null,
         "unique_global_name": "is_valid_mac",
         "unique_method_name": null,
         "suffix_name": null,
-        "description": null,
-        "brief": "Validates if a given string represents a valid MAC address.",
+        "description": "Checks if the supplied MAC address is valid.",
+        "brief": "Checks if a MAC address is valid",
         "return": {
           "type": "bool",
-          "description": "bool Returns true if the string is a valid MAC address, false otherwise",
+          "description": "true if the MAC address is valid",
           "is_pointer": false,
           "is_reference": false,
           "is_vector": false,
           "type_parameter": null
         },
         "parameters": {
-          "mac": {
+          "mac_address": {
             "type": "string",
-            "description": "The string containing the MAC address to validate",
+            "description": "MAC address to check",
             "is_pointer": false,
             "is_const": true,
             "is_reference": true,
@@ -43380,7 +43491,7 @@
     "group": "audio",
     "brief": null,
     "description": null,
-    "parsed_at": 1731296328,
+    "parsed_at": 1731880453,
     "path": "coresdk/src/coresdk/sound.h",
     "functions": [
       {
@@ -59992,7 +60103,7 @@
     "group": "physics",
     "brief": "Provides vector functions to work on vectors.",
     "description": null,
-    "parsed_at": 1731296337,
+    "parsed_at": 1731880454,
     "path": "coresdk/src/coresdk/vector_2d.h",
     "functions": [
       {

@@ -66,7 +66,7 @@ string ipv4_to_str(unsigned int ip);
 bool is_connection_open(connection con);
 bool is_connection_open(const string &name);
 bool is_valid_ipv4(const string &ip);
-bool is_valid_mac(const string &mac);
+bool is_valid_mac(const string &mac_address);
 connection last_connection(const string &name);
 connection last_connection(server_socket server);
 string mac_to_hex(const string &mac_address);

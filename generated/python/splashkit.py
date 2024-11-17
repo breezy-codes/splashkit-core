@@ -1,19 +1,27 @@
 from ctypes import *
 from enum import Enum
 from platform import system
+import os
+
+search_paths = []
 
 if system() == 'Darwin':
-  # macOS uses .dylib extension
-  cdll.LoadLibrary("libSplashKit.dylib")
-  sklib = CDLL("libsplashkit.dylib")
+    # macOS uses .dylib extension
+    search_paths = ["/usr/local/lib/libSplashKit.dylib", os.path.expanduser("~") + "/.splashkit/lib/macos/libSplashKit.dylib"]
 elif system() == 'Linux':
-  # Linux uses .so extension
-  cdll.LoadLibrary("libSplashKit.so")
-  sklib = CDLL("libSplashKit.so")
+    # Linux uses .so extension
+    search_paths = ["/usr/local/lib/libSplashKit.so", os.path.expanduser("~") + "/.splashkit/lib/linux/libSplashKit.so"]
 else:
-  # Windows uses .dll extension:
-  cdll.LoadLibrary("libSplashKit.dll")
-  sklib = CDLL("libsplashkit.dll")
+    # Windows uses .dll extension
+    search_paths = ["C:/msys64/mingw64/lib/SplashKit.dll", "C:/msys64/home/" + os.getlogin() + "/.splashkit/lib/win64/SplashKit.dll"]
+
+# find path to use -> format above is: ["global/path", ".splashkit/path"]
+for path in search_paths:
+    if (os.path.isfile(path)):
+        # load the library
+        cdll.LoadLibrary(path)
+        sklib = CDLL(path)
+        break
 
 class _sklib_string(Structure):
     _fields_ = [
@@ -1223,7 +1231,7 @@ def __skadapter__update_from_vector_bool(v, __skreturn):
 
     sklib.__sklib__free__sklib_vector_bool(v)
 def __skadapter__to_sklib_string(s):
-    return _sklib_string(s)
+    return _sklib_string(s.replace('\r',''))
 
 sklib.__sklib__free__sklib_string.argtypes = [ _sklib_string ]
 sklib.__sklib__free__sklib_string.restype = None
@@ -1486,6 +1494,8 @@ sklib.__sklib__dec_to_oct__unsigned_int.argtypes = [ c_uint ]
 sklib.__sklib__dec_to_oct__unsigned_int.restype = _sklib_string
 sklib.__sklib__hex_to_bin__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__hex_to_bin__string_ref.restype = _sklib_string
+sklib.__sklib__hex_to_mac__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__hex_to_mac__string_ref.restype = _sklib_string
 sklib.__sklib__hex_to_oct__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__hex_to_oct__string_ref.restype = _sklib_string
 sklib.__sklib__index_of__string_ref__string_ref.argtypes = [ _sklib_string, _sklib_string ]
@@ -1496,8 +1506,12 @@ sklib.__sklib__is_integer__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__is_integer__string_ref.restype = c_bool
 sklib.__sklib__is_number__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__is_number__string_ref.restype = c_bool
+sklib.__sklib__is_valid_mac__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__is_valid_mac__string_ref.restype = c_bool
 sklib.__sklib__length_of__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__length_of__string_ref.restype = c_int
+sklib.__sklib__mac_to_hex__string_ref.argtypes = [ _sklib_string ]
+sklib.__sklib__mac_to_hex__string_ref.restype = _sklib_string
 sklib.__sklib__oct_to_bin__string_ref.argtypes = [ _sklib_string ]
 sklib.__sklib__oct_to_bin__string_ref.restype = _sklib_string
 sklib.__sklib__oct_to_dec__string_ref.argtypes = [ _sklib_string ]
@@ -4141,6 +4155,10 @@ def hex_to_bin ( hex_str ):
     __skparam__hex_str = __skadapter__to_sklib_string(hex_str)
     __skreturn = sklib.__sklib__hex_to_bin__string_ref(__skparam__hex_str)
     return __skadapter__to_string(__skreturn)
+def hex_to_mac ( hex_str ):
+    __skparam__hex_str = __skadapter__to_sklib_string(hex_str)
+    __skreturn = sklib.__sklib__hex_to_mac__string_ref(__skparam__hex_str)
+    return __skadapter__to_string(__skreturn)
 def hex_to_oct ( hex_str ):
     __skparam__hex_str = __skadapter__to_sklib_string(hex_str)
     __skreturn = sklib.__sklib__hex_to_oct__string_ref(__skparam__hex_str)
@@ -4162,10 +4180,18 @@ def is_number ( text ):
     __skparam__text = __skadapter__to_sklib_string(text)
     __skreturn = sklib.__sklib__is_number__string_ref(__skparam__text)
     return __skadapter__to_bool(__skreturn)
+def is_valid_mac ( mac_address ):
+    __skparam__mac_address = __skadapter__to_sklib_string(mac_address)
+    __skreturn = sklib.__sklib__is_valid_mac__string_ref(__skparam__mac_address)
+    return __skadapter__to_bool(__skreturn)
 def length_of ( text ):
     __skparam__text = __skadapter__to_sklib_string(text)
     __skreturn = sklib.__sklib__length_of__string_ref(__skparam__text)
     return __skadapter__to_int(__skreturn)
+def mac_to_hex ( mac_address ):
+    __skparam__mac_address = __skadapter__to_sklib_string(mac_address)
+    __skreturn = sklib.__sklib__mac_to_hex__string_ref(__skparam__mac_address)
+    return __skadapter__to_string(__skreturn)
 def oct_to_bin ( octal_str ):
     __skparam__octal_str = __skadapter__to_sklib_string(octal_str)
     __skreturn = sklib.__sklib__oct_to_bin__string_ref(__skparam__octal_str)
@@ -6949,9 +6975,9 @@ def is_valid_ipv4 ( ip ):
     __skparam__ip = __skadapter__to_sklib_string(ip)
     __skreturn = sklib.__sklib__is_valid_ipv4__string_ref(__skparam__ip)
     return __skadapter__to_bool(__skreturn)
-def is_valid_mac ( mac ):
-    __skparam__mac = __skadapter__to_sklib_string(mac)
-    __skreturn = sklib.__sklib__is_valid_mac__string_ref(__skparam__mac)
+def is_valid_mac ( mac_address ):
+    __skparam__mac_address = __skadapter__to_sklib_string(mac_address)
+    __skreturn = sklib.__sklib__is_valid_mac__string_ref(__skparam__mac_address)
     return __skadapter__to_bool(__skreturn)
 def last_connection_named ( name ):
     __skparam__name = __skadapter__to_sklib_string(name)
