@@ -2045,7 +2045,7 @@
     "group": "utilities",
     "brief": "SplashKit provides some basic data manipulation functions to\nhelp make it easy to get some basic tasks performed.",
     "description": null,
-    "parsed_at": 1725691124,
+    "parsed_at": 1731816280,
     "path": "coresdk/src/coresdk/basics.h",
     "functions": [
       {
@@ -5195,7 +5195,7 @@
     "group": "geometry",
     "brief": null,
     "description": null,
-    "parsed_at": 1725691127,
+    "parsed_at": 1731816281,
     "path": "coresdk/src/coresdk/circle_geometry.h",
     "functions": [
       {
@@ -20942,7 +20942,7 @@
     "group": "interface",
     "brief": "SplashKit Interface provides functions to create user interfaces, with elements such as draggable panels, buttons and text boxes.",
     "description": "SplashKit`s interface library provides various functions for creating\npanels, and drawing interface elements such as buttons, text boxes, and more",
-    "parsed_at": 1725691142,
+    "parsed_at": 1731816283,
     "path": "coresdk/src/coresdk/interface.h",
     "functions": [
       {
@@ -31021,7 +31021,7 @@
     "group": "audio",
     "brief": null,
     "description": null,
-    "parsed_at": 1725691150,
+    "parsed_at": 1731816284,
     "path": "coresdk/src/coresdk/music.h",
     "functions": [
       {
@@ -32051,7 +32051,7 @@
     "group": "networking",
     "brief": "SplashKit's network-related functions allow you to communicate data\nacross networks.",
     "description": null,
-    "parsed_at": 1726736359,
+    "parsed_at": 1731816286,
     "path": "coresdk/src/coresdk/networking.h",
     "functions": [
       {
@@ -42624,7 +42624,7 @@
     "group": "audio",
     "brief": null,
     "description": null,
-    "parsed_at": 1725691159,
+    "parsed_at": 1731816287,
     "path": "coresdk/src/coresdk/sound.h",
     "functions": [
       {
@@ -59236,7 +59236,7 @@
     "group": "physics",
     "brief": "Provides vector functions to work on vectors.",
     "description": null,
-    "parsed_at": 1725691173,
+    "parsed_at": 1731816288,
     "path": "coresdk/src/coresdk/vector_2d.h",
     "functions": [
       {
