@@ -390,4 +390,34 @@ namespace splashkit_lib
         return bin_to_hex(bin_str);
     }
 
+    bool is_binary(const string &bin_str)
+    {
+        for (char c : bin_str)
+        {
+            if (c != '0' && c != '1')
+                return false;
+        }
+        return !bin_str.empty();
+    }
+
+    bool is_hex(const string &hex_str)
+    {
+        for (char c : hex_str)
+        {
+            if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f')))
+                return false;
+        }
+        return !hex_str.empty();
+    }
+
+    bool is_octal(const string &octal_str)
+    {
+        for (char c : octal_str)
+        {
+            if (c < '0' || c > '7')
+                return false;
+        }
+        return !octal_str.empty();
+    }
+
 }
